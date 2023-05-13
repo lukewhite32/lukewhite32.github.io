@@ -1,7 +1,7 @@
 var breakfastItems = ['Eggs', 'Bacon', 'Toast', 'Bagel', 'Cereal', 'Parfait', 'Yogurt'];
 var lunchItems = ['Pb and J', 'Tuna melt', 'Turkey sandwich', 'Ham sandwich', 'Roast beef sandwich', 'Item', 'Another item'];
 var dinnerItems = ['Steak', 'Lobster', 'Spagetti', 'Mac n cheese', 'Soup', 'Chili', 'Salmon'];
-
+alert("this is a test");
 var sun = [];
 var mon = [];
 var tues = [];
@@ -11,15 +11,6 @@ var fri = [];
 var sat = [];
 
 function shuffle(array) {          // thanks stackoverflow
-    /*let currentIndex = array.length,  randomIndex;
-  
-    while (currentIndex != 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-  
-        [array[currentIndex], array[randomIndex]] = [
-            array[randomIndex], array[currentIndex]];
-    }*/
     return array.sort(() => Math.random() - .5);
 }
 
@@ -121,5 +112,3 @@ document.getElementById("add-as-dinner").onclick = () => {
 };
 shuffleItems();
 loadTable();
-
-alert("this is a test");
