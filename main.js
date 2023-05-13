@@ -61,12 +61,46 @@ function shuffleItems() {
 }
 
 function loadTable() {
-    var item = document.getElementById("main-table");
-    item.innerHTML = "<tr> <th></th> <th>Sunday</th> <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> <th>Saturday</th> </tr>";
- 
-    item.innerHTML += "<tr> <th>Breakfast</th> <td>" + sun[0] + "</td>" + " <td>" + mon[0] + "</td>" + "<td>" + tues[0] + "</td>" + "<td>" + wed[0] + "</td>" + "<td>" + thurs[0] + "</td>" + "<td>" + fri[0] + "</td>" + "<td>" + sat[0] + "</td>" + "</tr>";
-    item.innerHTML += "<tr> <th>Lunch</th><td>" + sun[1] + "</td>" + " <td>" + mon[1] + "</td>" + "<td>" + tues[1] + "</td>" + "<td>" + wed[1] + "</td>" + "<td>" + thurs[1] + "</td>" + "<td>" + fri[1] + "</td>" + "<td>" + sat[1] + "</td>" + "</tr>";
-    item.innerHTML += "<tr> <th>Dinner</th><td>" + sun[2] + "</td>" + " <td>" + mon[2] + "</td>" + "<td>" + tues[2] + "</td>" + "<td>" + wed[2] + "</td>" + "<td>" + thurs[2] + "</td>" + "<td>" + fri[2] + "</td>" + "<td>" + sat[2] + "</td>" + "</tr>";
+    let item = document.getElementsByClassName("grid-container")[0];
+    //item.innerHTML = "<tr> <th></th> <th>Sunday</th> <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> <th>Saturday</th> </tr>";
+    item.innerHTML = '<div class="grid-item"></div>';
+    item.innerHTML += '<div class="grid-item">Sunday</div>';
+    item.innerHTML += '<div class="grid-item">Monday</div>';
+    item.innerHTML += '<div class="grid-item">Tuesday</div>';
+    item.innerHTML += '<div class="grid-item">Wednesday</div>';
+    item.innerHTML += '<div class="grid-item">Thursday</div>';
+    item.innerHTML += '<div class="grid-item">Friday</div>';
+    item.innerHTML += '<div class="grid-item">Saturday</div>';
+
+    item.innerHTML += '<div class="grid-item">Breakfast: </div>';
+    item.innerHTML += '<div class="grid-item">' + sun[0] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + mon[0] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + tues[0] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + wed[0] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + thurs[0] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + fri[0] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + sat[0] + '</div>';
+
+    item.innerHTML += '<div class="grid-item">Lunch: </div>';
+    item.innerHTML += '<div class="grid-item">' + sun[1] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + mon[1] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + tues[1] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + wed[1] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + thurs[1] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + fri[1] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + sat[1] + '</div>';
+
+    item.innerHTML += '<div class="grid-item">Dinner: </div>';
+    item.innerHTML += '<div class="grid-item">' + sun[2] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + mon[2] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + tues[2] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + wed[2] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + thurs[2] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + fri[2] + '</div>';
+    item.innerHTML += '<div class="grid-item">' + sat[2] + '</div>';
+    //item.innerHTML += "<tr> <th>Breakfast</th> <td>" + sun[0] + "</td>" + " <td>" + mon[0] + "</td>" + "<td>" + tues[0] + "</td>" + "<td>" + wed[0] + "</td>" + "<td>" + thurs[0] + "</td>" + "<td>" + fri[0] + "</td>" + "<td>" + sat[0] + "</td>" + "</tr>";
+    //item.innerHTML += "<tr> <th>Lunch</th><td>" + sun[1] + "</td>" + " <td>" + mon[1] + "</td>" + "<td>" + tues[1] + "</td>" + "<td>" + wed[1] + "</td>" + "<td>" + thurs[1] + "</td>" + "<td>" + fri[1] + "</td>" + "<td>" + sat[1] + "</td>" + "</tr>";
+    //item.innerHTML += "<tr> <th>Dinner</th><td>" + sun[2] + "</td>" + " <td>" + mon[2] + "</td>" + "<td>" + tues[2] + "</td>" + "<td>" + wed[2] + "</td>" + "<td>" + thurs[2] + "</td>" + "<td>" + fri[2] + "</td>" + "<td>" + sat[2] + "</td>" + "</tr>";
 }
 
 document.getElementById("shuffle").onclick = () => {
@@ -82,7 +116,7 @@ document.getElementById("add-as-lunch").onclick = () => {
     document.getElementById("item-text").value = ""
 };
 document.getElementById("add-as-dinner").onclick = () => {
-    dinnerItems.push(document.getElementById("item-text").value);
+    dinnerItems.push(document.getElementById("item-text"));
     document.getElementById("item-text").value = ""
 };
 shuffleItems();
