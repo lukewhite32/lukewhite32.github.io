@@ -121,3 +121,5 @@ document.getElementById("add-as-dinner").onclick = () => {
 };
 shuffleItems();
 loadTable();
+
+alert("this is a test");
