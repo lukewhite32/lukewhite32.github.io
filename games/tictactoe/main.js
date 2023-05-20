@@ -1,9 +1,10 @@
 var rows = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var player = 1;
+var frozen = false;
 
 function changeSlot(s, val) {
     rows[s] = val;
-} 
+}
 
 function changePlayer() {
     if (player == 1) {
@@ -38,21 +39,24 @@ function isWin() {
 }
 
 function updateBoard() {
+    if (frozen) {
+        return;
+    }
     if (player == 1) {
         if (isWin()) {
             document.getElementById("turn").innerText = "O wins!";
+            frozen = true;
         }
         else {
             document.getElementById("turn").innerText = "X's turn";
-            document.getElementById("turn").style.animationPlayState = "paused";
         }
     }
     else {
         if (isWin()) {
             document.getElementById("turn").innerText = "X wins!";
+            frozen = true;
         }
         else {
-            document.getElementById("turn").style.animationPlayState = "paused";
             document.getElementById("turn").innerText = "O's turn";
         }
     }
@@ -66,10 +70,12 @@ function updateBoard() {
         if (rows[x] == 0) {
             let butt = document.createElement('BUTTON');
             butt.className = "click-button";
-            butt.onclick = () => { 
-                changeSlot(x, player);
-                changePlayer();
-                updateBoard();
+            if (!frozen) {            
+                butt.onclick = () => { 
+                    changeSlot(x, player);
+                    changePlayer();
+                    updateBoard();
+                }
             }
             add.appendChild(butt);
         }
@@ -95,6 +101,7 @@ function clear() {
 
 document.getElementById("c").onclick = () => {
     clear();
+    frozen = false;
     updateBoard();
 }
 updateBoard();
