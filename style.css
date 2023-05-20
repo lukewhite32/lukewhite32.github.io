@@ -1,55 +1,48 @@
 html {
     height: 100%;
-}
-
-h1 {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.break {
-    padding-bottom: 4%;
-}
-
-.end {
-    padding-bottom: 13%;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
-    grid-template-rows: 50px 50px 50px 50px;
-    border: 1px outset black;
-}
-
-.grid-item {
-    display: inline-grid;
-    border: 1px solid black;
-    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
 }
 
 body {
-    background-size: 100%;
-    background: linear-gradient(to bottom, rgb(87, 172, 87), rgb(0, 122, 0));
+    background-color: rgb(255, 255, 103);
 }
 
-th {
-    border: 3px solid black;
-    width: 150px;
-    height: 30px;
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
+button {
+    position: relative;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-td {
-    border: 8px border black;
-    width: 150px;
-    height: 50px;
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
+button:hover {
+    background-color: red;
 }
 
-table {
-    margin-left: auto;
-    margin-right: auto;
+.menu-button {
+    left: 100px;
+    top: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    background-color: rgb(255, 255, 103);
+    border: 1px solid rgb(255, 255, 103);
+    border-radius: 0px;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+#top-bar {
+    width: 100%;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom: 2px solid black;
+}
+
+#menu {
+    position: absolute;
+    font-size: 20px;
+    top: 15px;
 }

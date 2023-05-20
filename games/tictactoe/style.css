@@ -1,0 +1,64 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(8, 163, 163);
+}
+
+#b {
+    padding-bottom: 5%;
+}
+
+.x-piece {
+    height: 10%;
+    width: 120px;
+    position: relative;
+}
+
+.x-piece::after {         /* thanks stackoverflow */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    right: 0;
+    content: "X"; /* use the hex value here... */
+    font-size: 80px; 
+    color: whitesmoke;
+    line-height: 100px;
+    text-align: center;
+}
+
+.c {
+    text-align: center;
+}
+
+.o-piece {
+    height: 10%;
+    width: 120px;
+    position: relative;
+}
+
+.o-piece::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    right: 0;
+    content: "O"; /* use the hex value here... */
+    font-size: 80px; 
+    color: whitesmoke;
+    line-height: 100px;
+    text-align: center;
+}
+
+.grid-item {
+    display: inline-grid;
+    border: 5px solid silver;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 10% 10% 10%;
+    grid-template-rows: 120px 120px 120px;
+    justify-content: center;
+}

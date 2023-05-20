@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
+        <title>My Github website</title>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <h1>Food App</h1>
-        <div class="break"></div>
-        <div class="grid-container"></div> 
-        <button id="shuffle">Shuffle</button>
-        <div class="break"></div>
-        <h3>Add item</h3>
-        <label>Enter in the name:</label>
-        <input type="text" id="item-text">
-        <p></p> 
-        <button id="add-as-breakfast">Add as breakfast</button>
-        <button id="add-as-lunch">Add as lunch</button>
-        <button id="add-as-dinner">Add as dinner</button>
-        <div class="end"></div>
-        <script src="main.js"></script>
+        <div id="top-bar">
+            <div id="menu">Menu:</div>
+            <button onclick="window.location.href='food-app/index.html'" class="menu-button">Food app</button>
+            <button onclick="window.location.href='games/index.html'" class="menu-button">Games</button>
+        </div>
+        <div id="everything-else">
+            <h1 class="centered-text">Welcome to my site!</h1>
+            <p class="centered-text">Just another Github site! Nothing unusual, maybe just a few games here and there.</p>
+            <h2 class="centered-text">UNDER DEVELOPMENT</h2>
+        </div>
+
     </body>
 </html>
