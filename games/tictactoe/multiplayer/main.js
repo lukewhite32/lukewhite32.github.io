@@ -55,7 +55,7 @@ setInterval(() => {
     }
 }, 500);
 
-var rows = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+/*var rows = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var frozen = false;
 
 function changeSlot(s, val) {
@@ -167,4 +167,4 @@ document.getElementById("c").onclick = () => {
     frozen = false;
     updateBoard();
 }
-updateBoard();
+updateBoard();*/
