@@ -1,78 +1,13 @@
 var webSock = new WebSocket("ws://localhost:8080")
 var lastMessage = ""
 var onHold = true;
+var checkIfHold = 5;
 var player = 0;
-
-webSock.addEventListener("message", (event) => {
-    lastMessage = event.data;
-});
-
-function Send(v) {
-    //if (!(webSock.readyState == WebSocket.CLOSED)) {
-        webSock.send(v);
-    //}
-}
-
-setInterval(() => {
-    console.log("Called");
-    if (lastMessage[0] == "p" && (!player)) {
-        player = 0 + lastMessage[lastMessage.length - 1];
-    }
-    else {
-        Send("getPiece");
-    }
-    if (player) {
-        if (lastMessage[0] == "h") {
-            
-            if (lastMessage[lastMessage.length - 1] == "1") {
-                onHold = true;
-            }
-            else {
-                onHold = false;
-            }
-        }
-        else {
-            Send("getHold");
-        }
-    }
-    else {
-        if (lastMessage[0] == "p") {
-            player = 0 + lastMessage[lastMessage.length - 1];
-        }
-        else {
-            Send("l");
-        }
-    }
-
-    if (webSock.readyState == WebSocket.CLOSED) {
-        document.getElementById("hold").textContent = "NO CONNECTION";
-    }
-    else if (onHold) {
-        document.getElementById("hold").textContent = "On hold";
-    }
-    else if (onHold) {
-        document.getElementById("hold").textContent = "NOT hold";
-    }
-}, 500);
-
-/*var rows = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-var frozen = false;
-
-function changeSlot(s, val) {
-    rows[s] = val;
-}
-
-function changePlayer() {
-    if (player == 1) {
-        player = 2;
-        return;
-    }
-    player = 1;
-}
-
-function allEqual(val1, val2, val3) {
-    return (val1 == val3) && (val2 == val3) && (val1 == val2);
-}
+var connectionState = 0;
+var isTurn = false;
+var hasSetOnclicks = false;
+var board = document.getElementById("the-grid");
+var rows = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function isWin() {
     for (let x = 0; x < 3; x ++) {
@@ -94,77 +29,131 @@ function isWin() {
     return false;
 }
 
-function updateBoard() {
-    if (frozen) {
-        return;
-    }
+webSock.addEventListener("message", (event) => {
+    lastMessage = event.data;
+});
+
+function Send(v) {
+    //if (!(webSock.readyState == WebSocket.CLOSED)) {
+        webSock.send(v);
+    //}
+}
+
+function isReady() {
+    return !onHold && player;
+}
+
+function getOpposingPiece() {
     if (player == 1) {
-        if (isWin()) {
-            document.getElementById("turn").innerText = "O wins!";
-            frozen = true;
+        return 2;
+    }
+    return 1;
+}
+
+function setButtonOnclicks() {
+    hasSetOnclicks = true;
+    for (let x = 1; x < 10; x ++) {
+        document.getElementById("slot-" + x).onclick = () => {
+            Send(x-1);
+            isTurn = false;
+            rows[x] = player;
+        }
+    }
+}
+
+function displayBoard() {
+
+}
+
+function hideBoard() {
+
+}
+
+for (let x = 0; x < 9; x ++) {
+    document.getElementsByClassName("grid-container")[0].children[x].children[0].onclick = () => {
+        Send(x);
+        isTurn = false;
+        rows[x] = player;
+    }
+}
+
+setInterval(() => {
+    if (webSock.readyState == WebSocket.CLOSED) {
+        if (connectionState != 0) {
+            document.getElementById("all").innerHTML = '<h1>No connection to server!</h1><p>The server is not currently online. Try again another time.</p>';
+            connectionState = 0;
+        }
+    }
+    else if (onHold) {
+        if (connectionState != 1) {
+            document.getElementById("all").innerHTML = '<h1>You are currently on hold.</h1> <p>Searching for available games...</p>';
+            connectionState = 1;
+        }
+    }
+    else if (!onHold) {
+        if (connectionState != 2) {
+            connectionState = 2;
+            document.getElementById("all").innerHTML = '<h1>Game founded!</h1><div class="grid-container"><div class="grid-item"><button id="slot-1" class="click-button"></button></div><div class="grid-item"><button id="slot-2" class="click-button"></button></div><div class="grid-item"><button id="slot-3" class="click-button"></button></div><div class="grid-item"><button id="slot-4" class="click-button"></button></div><div class="grid-item"><button id="slot-5" class="click-button"></button></div><div class="grid-item"><button id="slot-6" class="click-button"></button></div><div class="grid-item"><button id="slot-7" class="click-button"></button></div><div class="grid-item"><button id="slot-8" class="click-button"></button></div><div class="grid-item"><button id="slot-9" class="click-button"></button></div></div>'
+        }
+    }
+    checkIfHold ++;
+    console.log(checkIfHold);
+    if (lastMessage[0] == "p" && (!player)) {
+        player = lastMessage[lastMessage.length - 1];
+        if (player == 1) {
+            isTurn = true;
         }
         else {
-            document.getElementById("turn").innerText = "X's turn";
+            isTurn = false;
         }
     }
     else {
-        if (isWin()) {
-            document.getElementById("turn").innerText = "X wins!";
-            frozen = true;
-        }
-        else {
-            document.getElementById("turn").innerText = "O's turn";
+        if (!player) {
+            Send("getPiece");
         }
     }
-    var board = document.getElementsByClassName("grid-container")[0];
-    
-    board.innerHTML = "";
+    if (player) {
+        if (lastMessage[0] == "h") {
+            
+            if (lastMessage[lastMessage.length - 1] == "1") {
+                onHold = true;
+            }
+            else {
+                onHold = false;
+            }
+        }
+        if (checkIfHold > 5) {
+            checkIfHold = 0;
+            Send("getHold");
+        }
+    }
 
-    for (let x = 0; x < 9; x ++) {
-        let add = document.createElement('DIV');
-        add.className = "grid-item";
-        if (rows[x] == 0) {
-            let butt = document.createElement('BUTTON');
-            butt.className = "click-button";
-            if (!frozen) {            
-                butt.onclick = () => { 
-                    changeSlot(x, player);
-                    Send("" + x);
-                    changePlayer();
-                    updateBoard();
+    if (player && !onHold) {
+        setButtonOnclicks();
+        if (isTurn) {
+            for (let x = 0; x < 9; x ++) {
+                if (rows[x] == 1) {
+                    let add = document.createElement('DIV');
+                    x.className = "x-piece";
+                    document.getElementsByClassName("grid-container")[0].children.splice(x, 1, add);
+                    console.log(document.getElementsByClassName("grid-container")[0].children);
+                }
+                else if (rows[x] == 2) {
+                    let add = document.createElement('DIV');
+                    add.className = "o-piece";
+                    document.getElementsByClassName("grid-container")[0].children.splice(x, 1, add);
                 }
             }
-            add.appendChild(butt);
-        }
-        else if (rows[x] == 1) {
-            let x = document.createElement('DIV');
-            x.className = "x-piece";
-            add.appendChild(x);
         }
         else {
-            let o = document.createElement('DIV');
-            o.className = "o-piece";
-            add.appendChild(o);
+            for (let x = 0; x < document.getElementsByClassName("click-button").length; x ++) {
+                document.getElementsByClassName("click-button")[x].disabled = true;
+                document.getElementsByClassName("click-button")[x].style.visibility = 'hidden';
+            }
+            if (lastMessage[0] >= '0' && lastMessage[0] <= '9') {
+                rows[lastMessage[0]] = getOpposingPiece();
+            }
         }
-        board.appendChild(add);
     }
-}
-
-function clear() {
-    rows = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    player = 1;
-    document.getElementById("turn").style.animationPlayState = "paused";
-}
-
-function updateRows() {
-    if (lastMessage) {
-        changeSlot(lastMessage);
-    }
-}
-
-document.getElementById("c").onclick = () => {
-    clear();
-    frozen = false;
-    updateBoard();
-}
-updateBoard();*/
+    board = document.getElementById("the-grid");
+}, 200);

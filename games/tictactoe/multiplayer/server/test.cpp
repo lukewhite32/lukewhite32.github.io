@@ -6,7 +6,6 @@
 
 struct User {
     crow::websocket::connection* conn;
-    bool 
 };
 
 struct Game {
@@ -32,6 +31,7 @@ int getGameOfUser(User* user) {
 
 User* getOtherUserOfGame(User* user1) {
     if (getGameOfUser(user1) == -1) {
+        std::cout << "case" << std::endl;
         return NULL;
     }
     if (games[getGameOfUser(user1)].x == user1) {
@@ -69,34 +69,28 @@ int main() {
     .onopen([&](crow::websocket::connection& conn) {
                 if (!hold) {
                     hold = new User {&conn};
-                    std::cout << "hold created" << std::endl;
                 }
                 else {
                     games.push_back(*new Game {hold, new User {&conn}});
-                    std::cout << "hold merged" << std::endl;
                     hold = NULL;
                 }
             })
     .onclose([&](crow::websocket::connection& conn, const std::string& reason) {
-                if (getGameOfUser(getUserFromConn(conn)) == -1) {
-                    hold = NULL;
-                }
-                else if (games[getGameOfUser(getUserFromConn(conn))].x -> conn != &conn) {
-                    if (!hold) {
-                        hold = games[getGameOfUser(getUserFromConn(conn))].o;
-                    }
-                    else {
-                        games.push_back(*new Game {getUserFromConn(conn), hold});
+                if (hold) {
+                    if (&conn == hold -> conn) {
                         hold = NULL;
                     }
                 }
-                else if (games[getGameOfUser(getUserFromConn(conn))].o -> conn != &conn) {
-                    if (!hold) {
-                        hold = games[getGameOfUser(getUserFromConn(conn))].x;
+                else {
+                    if ((games[getGameOfUser(getUserFromConn(conn))].x) == getUserFromConn(conn)) {
+                        hold = (games[getGameOfUser(getUserFromConn(conn))].o);
+                        delete games[getGameOfUser(getUserFromConn(conn))].x;
+                        games.erase(games.begin() + getGameOfUser(getUserFromConn(conn)));
                     }
                     else {
-                        games.push_back(*new Game {getUserFromConn(conn), hold});
-                        hold = NULL;
+                        hold = (games[getGameOfUser(getUserFromConn(conn))].x);
+                        delete games[getGameOfUser(getUserFromConn(conn))].o;
+                        games.erase(games.begin() + getGameOfUser(getUserFromConn(conn)));
                     }
                 }
             })
@@ -128,16 +122,16 @@ int main() {
                     conn.send_text("piece:1");
                 }
             }
-            
             if (data == "getHold") {
-                if (getUserFromConn(conn) == hold) {
-                    conn.send_text("hold:1");
-                }
-                else {
+                if (!hold) {
                     conn.send_text("hold:0");
                 }
+                else {
+                    if (&conn == (hold -> conn)) {
+                        conn.send_text("hold:1");
+                    }
+                }
             }
-            
         });
     app.port(8080).multithreaded().run();
 }
