@@ -2,6 +2,11 @@ html, body {
     padding: 0;
     margin: 0;
     background-color: rgb(8, 163, 163);
+    font-size: 100%;
+}
+
+button {
+    border: 1px solid black;
 }
 
 #b {
@@ -9,22 +14,13 @@ html, body {
 }
 
 .x-piece {
+    position: relative;
     height: 10%;
     width: 10%;
-    position: relative;
-}
-
-.x-piece::after {         /* thanks stackoverflow */
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
     left: 20%;
-    content: "X"; /* use the hex value here... */
-    font-size: 80px; 
-    color: whitesmoke;
-    line-height: 100px;
+    font-size: 10vw; 
     text-align: center;
+    color: whitesmoke;
 }
 
 .c {
@@ -32,22 +28,13 @@ html, body {
 }
 
 .o-piece {
+    position: relative;
+    font-size: 10vw; 
     height: 10%;
     width: 10%;
-    position: relative;
-}
-
-.o-piece::after {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
     left: 20%;
-    content: "O"; /* use the hex value here... */
-    font-size: 80px; 
-    color: whitesmoke;
-    line-height: 100px;
     text-align: center;
+    color: whitesmoke;
 }
 
 .grid-item {
@@ -58,7 +45,7 @@ html, body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 10% 10% 10%;
-    grid-template-rows: 120px 120px 120px;
+    grid-template-columns: 12vw 12vw 12vw;
+    grid-template-rows: 12vw 12vw 12vw;
     justify-content: center;
 }

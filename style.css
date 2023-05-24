@@ -16,7 +16,7 @@ button {
 }
 
 button:hover {
-    background-color: red;
+    background-color: rgb(184, 108, 255);
 }
 
 .menu-button {

@@ -81,11 +81,13 @@ function updateBoard() {
         }
         else if (rows[x] == 1) {
             let x = document.createElement('DIV');
+            x.innerHTML = "X";
             x.className = "x-piece";
             add.appendChild(x);
         }
         else {
             let o = document.createElement('DIV');
+            o.innerHTML = "O";
             o.className = "o-piece";
             add.appendChild(o);
         }
