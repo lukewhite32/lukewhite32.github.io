@@ -1,5 +1,6 @@
 html {
     height: 100%;
+    width: 100%;
 }
 
 h1 {
@@ -52,4 +53,8 @@ td {
 table {
     margin-left: auto;
     margin-right: auto;
+}
+
+#everything {
+    display: none;
 }

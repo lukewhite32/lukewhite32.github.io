@@ -10,7 +10,7 @@ html, body {
 
 .x-piece {
     height: 10%;
-    width: 120px;
+    width: 10%;
     position: relative;
 }
 
@@ -18,8 +18,8 @@ html, body {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 15px;
     right: 0;
+    left: 20%;
     content: "X"; /* use the hex value here... */
     font-size: 80px; 
     color: whitesmoke;
@@ -33,7 +33,7 @@ html, body {
 
 .o-piece {
     height: 10%;
-    width: 120px;
+    width: 10%;
     position: relative;
 }
 
@@ -41,8 +41,8 @@ html, body {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 15px;
     right: 0;
+    left: 20%;
     content: "O"; /* use the hex value here... */
     font-size: 80px; 
     color: whitesmoke;

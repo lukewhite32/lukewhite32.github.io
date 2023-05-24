@@ -1,4 +1,4 @@
-var webSock = new WebSocket("ws://localhost:8080")
+var webSock = new WebSocket("ws://192.168.12.112:8080")
 var lastMessage = ""
 var onHold = true;
 var checkIfHold = 5;

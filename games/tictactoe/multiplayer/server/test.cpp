@@ -31,7 +31,6 @@ int getGameOfUser(User* user) {
 
 User* getOtherUserOfGame(User* user1) {
     if (getGameOfUser(user1) == -1) {
-        std::cout << "case" << std::endl;
         return NULL;
     }
     if (games[getGameOfUser(user1)].x == user1) {
@@ -79,6 +78,7 @@ int main() {
                 if (hold) {
                     if (&conn == hold -> conn) {
                         hold = NULL;
+                        std::cout << "was hold" << std::endl;
                     }
                 }
                 else {
@@ -86,23 +86,29 @@ int main() {
                         hold = (games[getGameOfUser(getUserFromConn(conn))].o);
                         delete games[getGameOfUser(getUserFromConn(conn))].x;
                         games.erase(games.begin() + getGameOfUser(getUserFromConn(conn)));
+                        std::cout << "erasing game" << std::endl;
                     }
                     else {
                         hold = (games[getGameOfUser(getUserFromConn(conn))].x);
                         delete games[getGameOfUser(getUserFromConn(conn))].o;
                         games.erase(games.begin() + getGameOfUser(getUserFromConn(conn)));
+                        std::cout << "erasing game" << std::endl;
                     }
                 }
             })
     .onmessage([&](crow::websocket::connection& conn, const std::string& data, bool is_binary) {
             if (is_binary) {
                 if (isdigit(data[0])) {
-                    getOtherUserOfGame(getUserFromConn(conn)) -> conn -> send_binary(data);
+                    if (getOtherUserOfGame(getUserFromConn(conn))) {
+                        getOtherUserOfGame(getUserFromConn(conn)) -> conn -> send_binary(data);
+                    }
                 }
             }
             else {
                 if (isdigit(data[0])) {
-                    getOtherUserOfGame(getUserFromConn(conn)) -> conn -> send_text(data);
+                    if (getOtherUserOfGame(getUserFromConn(conn))) {
+                        getOtherUserOfGame(getUserFromConn(conn)) -> conn -> send_text(data);
+                    }
                 }
             }
             if (hold) {

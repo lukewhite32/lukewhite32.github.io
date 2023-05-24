@@ -93,7 +93,21 @@ function loadTable() {
     //item.innerHTML += "<tr> <th>Lunch</th><td>" + sun[1] + "</td>" + " <td>" + mon[1] + "</td>" + "<td>" + tues[1] + "</td>" + "<td>" + wed[1] + "</td>" + "<td>" + thurs[1] + "</td>" + "<td>" + fri[1] + "</td>" + "<td>" + sat[1] + "</td>" + "</tr>";
     //item.innerHTML += "<tr> <th>Dinner</th><td>" + sun[2] + "</td>" + " <td>" + mon[2] + "</td>" + "<td>" + tues[2] + "</td>" + "<td>" + wed[2] + "</td>" + "<td>" + thurs[2] + "</td>" + "<td>" + fri[2] + "</td>" + "<td>" + sat[2] + "</td>" + "</tr>";
 }
-
+document.getElementById("login-button").onclick = () => {
+    if (document.getElementById("login-username").value == "ellas-use-only") {
+        if (document.getElementById("login-password").value == "tHiSiSsEcUrE") {
+            document.getElementById("everything").style.display = "block";
+            document.getElementById("login").style.display = "none";
+            document.getElementById("login").style.position = "absolute";
+        }
+        else {
+            alert("LLLLLLLLLLLLLLLLLLLL! You tried, but failed XD");
+        }
+    }
+    else {
+        alert("LLLLLLLLLLLLLLLLLLLL! You tried, but failed XD");
+    }
+}
 document.getElementById("shuffle").onclick = () => {
     shuffleItems();
     loadTable()
