@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background-color: rgb(255, 255, 103);
+    background-color: rgb(226, 221, 76);
 }
 
 button {
@@ -13,18 +13,24 @@ button {
     padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: rgb(184, 108, 255);
+    background-color: rgb(178, 178, 248);
+    font-size: 27px;
+
+    /*animation-name: button-hover;
+    animation-duration: 1s;*/
+
 }
 
 .menu-button {
     top: 5px;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    background-color: rgb(255, 255, 103);
-    border: 1px solid rgb(255, 255, 103);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 23px;
+    background-color: rgb(226, 221, 76);
+    border: 1px solid rgb(226, 221, 76);
     border-radius: 0px;
 }
 
@@ -41,5 +47,5 @@ button:hover {
     padding-bottom: 20px;
     padding-right: 10px;
     padding-left: 10px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px outset black;
 }

@@ -1,6 +1,7 @@
 var breakfastItems = ['Eggs', 'Bacon', 'Toast', 'Bagel', 'Cereal', 'Parfait', 'Yogurt'];
 var lunchItems = ['Pb and J', 'Tuna melt', 'Turkey sandwich', 'Ham sandwich', 'Roast beef sandwich', 'Item', 'Another item'];
 var dinnerItems = ['Steak', 'Lobster', 'Spagetti', 'Mac n cheese', 'Soup', 'Chili', 'Salmon'];
+var webSock = new WebSocket("ws://localhost:54321");
 
 var sun = [];
 var mon = [];
