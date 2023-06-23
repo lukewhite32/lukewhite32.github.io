@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css" />
+        <title>Food app - Login</title>
     </head>
     <body>
         <div id="everything">
@@ -19,6 +20,14 @@
             <button id="add-as-breakfast">Add as breakfast</button>
             <button id="add-as-lunch">Add as lunch</button>
             <button id="add-as-dinner">Add as dinner</button>
+            <h3>Remove Item</h3>
+            <label>Enter in the item to remove:</label>
+            <select id="remove-select">
+                <optgroup label="Breakfast" id="breakfast-optgroup"></optgroup>
+                <optgroup label="Lunch" id="lunch-optgroup"></optgroup>
+                <optgroup label="Dinner" id="dinner-optgroup"></optgroup>
+            </select>
+            <button id="remove-button">Remove</button>
             <div class="end"></div>
         </div>
         <div id="login">

@@ -1,12 +1,18 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TicTacToe</title>
+        <meta name="author" content="Luke White">
+        <meta name="description" content="Tic Tac Toe--the game everyone loves! Play in single and multiplayer versions, or against the AI.">
+        <link rel="stylesheet" href="style.css">
+        <title>Tic-Tac-Toe - Menu</title>
     </head>
     <body>
-        <h1>Welcome to Tic-Tac-Toe!</h1>
-        <div><a href="singleplayer/">Singleplayer</a></div>
-        <div><a href="multiplayer/">Multiplayer</a></div>
+        <h1>Tic-Tac-Toe!</h1>
+        <button id="gamemode" onclick="window.location.href = 'singleplayer';">Single-Player</button>
+        <button id="gamemode" onclick="window.location.href = 'multiplayer';">Multi-Player</button>
+        <button id="gamemode" onclick="window.location.href = 'ai';">Against AI</button>
+        <script src="main.js"></script>
     </body>
 </html>
