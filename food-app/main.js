@@ -1,4 +1,4 @@
-var ISTESTING = false;
+var ISTESTING = true;
 
 var webSock = 0;
 if (ISTESTING) {
@@ -116,17 +116,23 @@ setInterval(function () {
     let items = lastMessage.split("\n"); 
     items.splice(21);
     if (items.length != 1) {
-        breakfastItems = [];
-        lunchItems = [];
-        dinnerItems = [];
+        let newBreakfast = [];
+        let newLunch = [];
+        let newDinner = [];
         for (let x = 0; x < 7; x ++) {
-            breakfastItems.push(items[x].split(":")[1]);
+            newBreakfast.push(items[x].split(":")[1]);
         }
         for (let x = 7; x < 14; x ++) {
-            lunchItems.push(items[x].split(":")[1]);
+            newLunch.push(items[x].split(":")[1]);
         }
         for (let x = 14; x < 21; x ++) {
-            dinnerItems.push(items[x].split(":")[1]);
+            newDinner.push(items[x].split(":")[1]);
+        }
+        if ((breakfastItems != newBreakfast) || (lunchItems != newLunch) || (dinnerItems != newDinner)) {
+            breakfastItems = newBreakfast;
+            lunchItems = newLunch;
+            dinnerItems = newDinner;
+            loadTable();
         }
     }
 }, 50);

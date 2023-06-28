@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Luke White">
+        <meta name="description" content="A random Github pages website you probably don't care about. Designed and developed by Luke White, someone you probably have never heard of before.">
+        <meta property="og:title" content="My Github website">
+        <meta property="og:description" content="A random Github pages website you probably don't care about. Designed and developed by Luke White, someone you probably have never heard of before.">
+        <meta property="og:image" content="images/meta-image.png">
+
+        <title>My Github website</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div id="top-bar">
+            <button class="menu-button" id="home">Home</button>
+            <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'about.html'">About</button>
+            <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'games.html'">Games</button>
+        </div>
+        <div id="main-page">
+            <h1>Welcome to my site!</h1>
+            <p>I'm Luke White, a programmer from Georgia with Python, C++, HTML, CSS, and JavaScript experience. Welcome to my website, written by scratch (unless you count the Python script I wrote). I am the lead programmer of Firestorm Robotics, </p>
+        </div>
+        <div id="end-page">
+            <p style="padding-top: 20px; font-size: 1.2em;">(No) Copywrite 2023 Luke White, someone you probably haven't heard of before.<br>For the 3 people who ever read this, I don't use cookies or collect personal information.</p>
+        </div>
+        <script>highlightButton(document.getElementById("home"))</script>
+    </body>
+</html>

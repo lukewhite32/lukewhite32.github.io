@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Luke White">
+        <meta name="description" content="A random Github pages website you probably don't care about. Designed and developed by Luke White, someone you probably have never heard of before.">
+        <meta property="og:title" content="My Github website">
+        <meta property="og:description" content="A random Github pages website you probably don't care about. Designed and developed by Luke White, someone you probably have never heard of before.">
+        <meta property="og:image" content="images/meta-image.png">
+
+        <title>My Github website</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div id="top-bar">
+            <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'home.html'">Home</button>
+            <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'about.html'">About</button>
+            <button class="menu-button" id="games">Games</button>
+        </div>
+        <div id="main-page">
+            <h1 style="font-family: monospace; font-size: 3em; color: red;">Games</h1>
+            <!--button style="
+            background-color: rgb(8, 163, 163); 
+            border: 0; 
+            font-size: 2em; 
+            color: white; 
+            width: 15vw;
+            height: 15vw;
+            margin-right: 70%;
+            "
+            onclick="window.location.href='../games/tictactoe'">Tic-Tac-Toe</button-->
+            <div style="display: inline-block;">
+                <a href="../games/tictactoe/"><img src="../images/tictactoe.png" width="350px" height="200px" /></a>
+            </div>
+        </div>
+        <script>highlightButton(document.getElementById("games"))</script>
+    </body>
+</html>

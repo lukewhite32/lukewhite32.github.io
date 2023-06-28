@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Luke White">
+        <meta name="description" content="A random Github pages website you probably don't care about. Designed and developed by Luke White, someone you probably have never heard of before.">
+        <meta property="og:title" content="My Github website">
+        <meta property="og:description" content="A random Github pages website you probably don't care about. Designed and developed by Luke White, someone you probably have never heard of before.">
+        <meta property="og:image" content="images/meta-image.png">
+
+        <title>My Github website</title>
+        <link rel="stylesheet" href="style.css" />
+
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div id="top-bar">
+            <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'home.html'">Home</button>
+            <button class="menu-button" id="about">About</button>
+            <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'games.html'">Games</button>
+        </div>
+        <div id="main-page">
+            <h1>About me</h1>
+            <h2 style="padding-left: 3%;">Table of Contents</h2>
+            <ul>
+                <li><button style="border: 0; background-color: white;" onclick="document.getElementById('intro-header').scrollIntoView();">Intro</button></li>
+                <li><button style="border: 0; background-color: white;" onclick="document.getElementById('firestorm-robotics-header').scrollIntoView();">Joining Firestorm</button></li>
+            </ul>
+            <h1 id="intro-header">Intro</h1>
+            <p>Meet me: Luke White (often referred to as Pookie, don't ask). I'm (currently) a 13 year old who has a passion for programming. I'm currently member of <a href="http://firestormrobotics.org/">Firestorm Robotics</a>, <a href="https://www.firstinspires.org/robotics/frc">FRC</a> team 6341. I first started programming when my dad bought me a Python book. I loved it, but after I had completed the book, I didn't know how to continue programming. Fast forward to September of 2022 when a friend invited me to join a local robotics club. I was eager to join, not knowing what to expect of the club.</p>
+            <h1 id="firestorm-robotics-header">My time with Firestorm Robotics</h1>
+            <p>When I first walked into the <a href="cherokeemakerspace.org">robotics building</a>, I looked around in awe and knew this was my kind of place. The lead programmer met me and eventually got me started on C++. Being a young programmer who only had some Python experience, C++ seemed <i>really</i> complicated. But after a few months, I was pretty fluent with it. So, when the <a href="https://www.youtube.com/watch?v=0zpflsYc4PA">2023 FRC season</a> came up, I felt ready to finally help out with the robot code. We all knew that this game would be code-reliant, and with our design, complicated math. </p>
+            <p>There were many times when we felt like giving up, and while I didn't spend nearly as much time as others, we had a lot of times where we spend all day refining and debugging the robot. Finally, the night before the competition, we discovered something devestating.</p>
+        </div>
+        <div id="end-page">
+            <p style="padding-top: 20px; font-size: 1.2em;">(No) Copywrite 2023 Luke White, someone you probably haven't heard of before.<br>For the 3 people who ever read this, I don't use cookies or collect personal information.</p>
+        </div>
+        <script>highlightButton(document.getElementById("about"))</script>
+    </body>
+</html>
