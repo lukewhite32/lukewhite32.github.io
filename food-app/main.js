@@ -18,7 +18,7 @@ var allBreakfast = [];
 var allLunch = [];
 var allDinner = [];
 
-var hasLoggedIn = false;
+var hasLoggedIn = true;
 var isUpdatedItems = false;
 
 var invalidCharacters = [';', ':'];
