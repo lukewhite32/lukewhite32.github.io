@@ -18,8 +18,8 @@ h1 {
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
-    grid-template-rows: 50px 50px 50px 50px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, minmax(5vh, 1fr));
     border: 1px outset black;
 }
 

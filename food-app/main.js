@@ -85,7 +85,7 @@ function loadTable() {
 
 setInterval(function () {
     if (webSock.readyState == WebSocket.CLOSED) {
-        window.location.href = "no-conn";
+        document.getElementById("connect-status") = "Loading...";
     }
     if (!isUpdatedItems) {
         webSock.send("getAll");
@@ -135,7 +135,7 @@ setInterval(function () {
             loadTable();
         }
     }
-}, 1000);
+}, 50);
 
 var loginInterval = 0;
 
