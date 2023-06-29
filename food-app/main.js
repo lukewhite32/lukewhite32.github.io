@@ -18,7 +18,7 @@ var allBreakfast = [];
 var allLunch = [];
 var allDinner = [];
 
-var hasLoggedIn = true;
+var hasLoggedIn = false;
 var isUpdatedItems = false;
 
 var invalidCharacters = [';', ':'];
@@ -135,7 +135,7 @@ setInterval(function () {
             loadTable();
         }
     }
-}, 50);
+}, 1000);
 
 var loginInterval = 0;
 
