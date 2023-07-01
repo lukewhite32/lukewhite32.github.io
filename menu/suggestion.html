@@ -17,20 +17,22 @@
     <body>
         <div id="begin-page">
             <div id="top-bar">
-                <button class="menu-button" id="home">Home</button>
+                <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'home.html'">Home</button>
                 <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'about.html'">About</button>
-                <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'suggestion.html'">Suggestions</button>
+                <button class="menu-button" id="suggestion">Suggestions</button>
                 <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'games.html'">Games</button>
             </div>
         </div>
         <div id="main-page">
-            <h1>Welcome to my site!</h1>
-            <p>I'm Luke White, a programmer from Georgia with Python, C++, HTML, CSS, and JavaScript experience. Welcome to my website, written by scratch! This site is where you can play some of your favorite games; all written by scratch! Choose from favorites, like <a href="../games/tictactoe/">Tic Tac Toe</a> or <a href="../games/checkers/">Checkers</a>. If you feel this website could look better, give me a <a href="suggestion.html">suggestion</a>. Enjoy!</p>
+            <h1>Suggestions</h1>
+            <p>I'm always looking to make this website look better. Submit a report below if you wish to give me advice.</p>
+            <textarea id="report-text" rows="6" cols="18">Enter a report here</textarea>
+            <button id="send-report" onclick="submitReport(document.getElementById(`report-text`).value)">Send</button>
         </div>
         <div id="end-page">
             <a href="mailto:lukebenwhite32@gmail.com">Email</a>
             <a href="https://github.com/lukewhite32">Github</a>
         </div>
-        <script>highlightButton(document.getElementById("home"))</script>
+        <script>highlightButton(document.getElementById("suggestion"))</script>
     </body>
 </html>

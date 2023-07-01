@@ -15,10 +15,13 @@
         <script src="main.js"></script>
     </head>
     <body>
-        <div id="top-bar">
-            <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'home.html'">Home</button>
-            <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'about.html'">About</button>
-            <button class="menu-button" id="games">Games</button>
+        <div id="begin-page">
+            <div id="top-bar">
+                <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'home.html'">Home</button>
+                <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'about.html'">About</button>
+                <button class="menu-button" onmouseover="highlightButton(this);" onmouseleave="resetButtonColors(this);" onclick="window.location.href = 'suggestion.html'">Suggestions</button>
+                <button class="menu-button" id="games">Games</button>
+            </div>
         </div>
         <div id="main-page">
             <h1 style="font-family: monospace; font-size: 3em; color: red;">Games</h1>
@@ -35,6 +38,10 @@
             <div style="display: inline-block;">
                 <a href="../games/tictactoe/"><img src="../images/tictactoe.png" width="350px" height="200px" /></a>
             </div>
+        </div>
+        <div id="end-page">
+            <a href="mailto:lukebenwhite32@gmail.com">Email</a>
+            <a href="https://github.com/lukewhite32">Github</a>
         </div>
         <script>highlightButton(document.getElementById("games"))</script>
     </body>

@@ -5,12 +5,8 @@
 
 body {
     margin: 0;
-    background-color: darkred;
+    background-color: white;
     font-size: .9em;
-}
-
-div {
-    box-sizing: border-box;
 }
 
 button {
@@ -19,6 +15,14 @@ button {
     padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+a {
+    color: red;
+}
+
+a:hover {
+    cursor: grab;
 }
 
 .menu-button {
@@ -36,33 +40,42 @@ button {
     color: darkred;
 }
 
+#begin-page {
+    min-height: 20vh;
+    background-color: darkred;
+}
+
+#begin-page p {
+    text-emphasis: bold;
+}
+
 #top-bar {
-    position: sticky;
+    position: fixed;
     display: flex;
-    top: 0;
+    width: 100%;
     flex-direction: row;
-    justify-content: space-evenly;
     padding-bottom: 5px;
+    justify-content: space-evenly;
     border-bottom: 2px outset black;
     background-color: darkred;
-    border-radius: 10px;
 }
 
 #main-page {
     text-align: left;
-    line-height: 30px;
+    line-height: 2em;
     word-spacing: 3px;
     font-family: Cantarell;
     font-size: 1.3em;
     background-color: white;
     box-shadow: 0 0 10px;
-    margin-top: 2%;
+    margin-top: -10vh;
+    margin-bottom: 5%;
     min-height: 100vh;
     padding-bottom: 2%;
     margin-left: 5%;
     margin-right: 5%;
     width: 90%;
-    border-radius: 15px 15px 0 0;
+    border-radius: 5px 5px 0 0;
 }
 
 #main-page h1 {
@@ -72,8 +85,12 @@ button {
 
 #main-page p {
     text-indent: 50px;
-    padding-left: 30px;
+    padding-left: 2%;
     padding-top: 30px;
+}
+
+#main-page textarea {
+    min-width: 100px;
 }
 
 #end-page {
@@ -81,4 +98,12 @@ button {
     background-color: black;
     color: white;
     min-height: 20vh;
+    text-align: center;
+}
+
+#end-page a {
+    display: block;
+    font-size: 20px;
+    color: white;
+    padding-top: 15px;
 }

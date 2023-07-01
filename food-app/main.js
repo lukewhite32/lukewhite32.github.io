@@ -85,7 +85,10 @@ function loadTable() {
 
 setInterval(function () {
     if (webSock.readyState == WebSocket.CLOSED) {
-        document.getElementById("connect-status") = "Loading...";
+        document.getElementById("connect-status").innerHTML = "Loading...";
+    }
+    else {
+        document.getElementById("connect-status").innerHTML = "";
     }
     if (!isUpdatedItems) {
         webSock.send("getAll");
@@ -170,14 +173,17 @@ document.getElementById("shuffle").onclick = () => {
     loadTable();
 };
 document.getElementById("add-as-breakfast").onclick = () => {
+    breakfastItems.push(document.getElementById("item-text").value);
     webSock.send("a;b:" + document.getElementById("item-text").value);
     document.getElementById("item-text").value = ""
 };
 document.getElementById("add-as-lunch").onclick = () => {
+    lunchItems.push(document.getElementById("item-text").value);
     webSock.send("a;l:" + document.getElementById("item-text").value);
     document.getElementById("item-text").value = ""
 };
 document.getElementById("add-as-dinner").onclick = () => {
+    dinnerItems.push(document.getElementById("item-text").value);
     webSock.send("a;d:" + document.getElementById("item-text").value);
     document.getElementById("item-text").value = ""
 };
