@@ -1,4 +1,4 @@
-var ISTESTING = false;
+var ISTESTING = true;
 
 var webSock = 0;
 if (ISTESTING) {

@@ -1,4 +1,4 @@
-var webSock = new WebSocket("ws://localhost:54321");//("wss://swaous.asuscomm.com/pookie/foodapp/foods");
+var webSock = new WebSocket("wss://swaous.asuscomm.com/pookie/foodapp/foods");
 
 function highlightButton(buttonObj) {
     buttonObj.style.backgroundColor = "white";
@@ -10,6 +10,17 @@ function resetButtonColors(buttonObj) {
     buttonObj.style.color = "white";
 }
 
+webSock.addEventListener('message', function (message) {
+    if (message.data == "S:0") {
+        document.getElementById("cooldown").innerHTML = "Wait! You are submitting reports too fast!";
+    }
+    else {
+        document.getElementById("cooldown").value = "";
+    }
+});
+
 function submitReport(text) {
-    webSock.send("S:" + text);
+    if (text) {
+        sugfile << stringSplit(data, ':')[1] + "\n\n";
+    }
 }
