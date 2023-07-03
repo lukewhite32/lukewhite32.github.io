@@ -24,6 +24,7 @@ webSock.addEventListener('message', function (message) {
 });
 
 function displaySuggestions() {
+    document.getElementById("suggestions").innerHTML = "Loading suggestions...";
     if (webSock.readyState == WebSocket.CLOSED) {
         document.getElementById("conn-status").innerText = "Loading...";
     }
@@ -46,8 +47,9 @@ function displaySuggestions() {
         if (document.getElementById("suggestions").innerHTML == "") {
             document.getElementById("suggestions").innerHTML = "(No suggestions have been made)";
         }
+        clearInterval(_displaySuggestionsInterval);
     }
 
 }
 
-setInterval(displaySuggestions, 400);
+var _displaySuggestionsInterval = setInterval(displaySuggestions, 100);
