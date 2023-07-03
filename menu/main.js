@@ -20,7 +20,7 @@ webSock.addEventListener('message', function (message) {
 });
 
 function submitReport(text) {
-    if (text) {
+    if (text != "") {
         webSock.send("S:"+text);
     }
 }
