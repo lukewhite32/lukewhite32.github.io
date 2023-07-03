@@ -1,4 +1,4 @@
-var webSock = new WebSocket("wss://swaous.asuscomm.com/pookie/foodapp/foods");
+var webSock = new WebSocket("ws://localhost:54321"); //("wss://swaous.asuscomm.com/pookie/foodapp/foods");
 
 function highlightButton(buttonObj) {
     buttonObj.style.backgroundColor = "white";
