@@ -11,4 +11,20 @@ h1 {
     padding-left: 10%;
     border-top: 2px solid grey;
     padding-bottom: 5vh;
+    padding-top: 10px;
+    background-color: aquamarine;
+}
+
+#bottom {
+    border-top: 2px solid grey;   
+}
+
+button {
+    border: 0;
+    background-color: darkred;
+    color: white;
+    padding: 10px;
+    font-size: 1.1em;
+    top: 2%;
+    left: 2%;
 }
