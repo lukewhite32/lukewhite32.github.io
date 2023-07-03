@@ -21,6 +21,6 @@ webSock.addEventListener('message', function (message) {
 
 function submitReport(text) {
     if (text) {
-        sugfile << stringSplit(data, ':')[1] + "\n\n";
+        webSock.send("S:"+text);
     }
 }
