@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.content {
+    text-align: left;
+    padding-left: 10%;
+    border-top: 2px solid grey;
+    padding-bottom: 5vh;
+}
