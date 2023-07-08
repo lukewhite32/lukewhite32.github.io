@@ -45,10 +45,6 @@ a:hover {
     background-color: darkred;
 }
 
-#begin-page p {
-    text-emphasis: bold;
-}
-
 #top-bar {
     position: fixed;
     display: flex;
