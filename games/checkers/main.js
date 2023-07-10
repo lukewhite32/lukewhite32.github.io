@@ -1,7 +1,21 @@
-var RED_PIECE = 1;
-var BLACK_PIECE = 2;
-var c = document.getElementById("the-canvas");
-var ctx = c.getContext("2d");
+const RED_PIECE = 1;
+const BLACK_PIECE = 2;
+var canvasWidth;
+const c = document.getElementById("the-canvas");
+const ctx = c.getContext("2d");
+
+if (window.innerWidth > window.innerHeight) {
+    ctx.canvas.width = window.innerHeight * .9;
+    ctx.canvas.height = window.innerHeight * .9;
+
+    canvasWidth = window.innerHeight * .9;
+}
+else {
+    ctx.canvas.width = window.innerWidth * .9;
+    ctx.canvas.height = window.innerWidth * .9;
+
+    canvasWidth = window.innerWidth * .9;
+}
 var board = [0, 0, 0, 0, 0, 0, 0, 0,
              0, 0, 0, 0, 0, 0, 0, 0,
              0, 0, 0, 0, 0, 0, 0, 0,
@@ -14,6 +28,38 @@ var board = [0, 0, 0, 0, 0, 0, 0, 0,
 var activePiece = -1;   /* No active piece being selected */
 var turn = BLACK_PIECE;
 
+const blackKing = document.createElement('img');
+blackKing.src = "images/black-king.png";
+blackKing.style.position = "absolute";
+
+const blackNorm = document.createElement('img');
+blackNorm.src = "images/black-norm.png";
+blackNorm.style.position = "absolute";
+
+const redKing = document.createElement('img');
+redKing.src = "images/red-king.png";
+redKing.style.position = "absolute";
+
+const redNorm = document.createElement('img');
+redNorm.src = "images/red-norm.png";8
+redNorm.style.position = "absolute";
+
+const blackKingSel = document.createElement('img');
+blackKingSel.src = "images/black-king-sel.png";
+blackKingSel.style.position = "absolute";
+
+const blackNormSel = document.createElement('img');
+blackNormSel.src = "images/black-norm-sel.png";
+blackNormSel.style.position = "absolute";
+
+const redKingSel = document.createElement('img');
+redKingSel.src = "images/red-king-sel.png";
+redKingSel.style.position = "absolute";
+
+const redNormSel = document.createElement('img');
+redNormSel.src = "images/red-norm-sel.png";
+redNormSel.style.position = "absolute";
+
 function getMousePosition(canvas, event) {       /* thanks stackoverflow */
     let rect = canvas.getBoundingClientRect();
     let x = event.clientX - rect.left;
@@ -24,6 +70,18 @@ function getMousePosition(canvas, event) {       /* thanks stackoverflow */
     };
 }
 
+function winBlack() {
+    document.getElementById("winner").innerText = "Black wins!";
+    document.getElementById("main-content").style.opacity = "50%";
+    document.getElementById("winner-page").style.display = "block";
+}
+
+function winRed() {
+    document.getElementById("winner").innerText = "Red wins!";
+    document.getElementById("main-content").style.opacity = "50%";
+    document.getElementById("winner-page").style.display = "block";
+}
+
 function changeTurn() {
     if (turn == RED_PIECE) {
         turn = BLACK_PIECE;
@@ -32,6 +90,17 @@ function changeTurn() {
     }
     document.getElementById("turn").innerText = "Red's turn";
     turn = RED_PIECE;
+}
+
+function colorWins(color) {
+    for (let x = 0; x < board.length; x ++) {
+        if (board[x] != 0) {
+            if (board[x].identifier == color) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 function convertCoordsToIndex(x, y) {
@@ -50,22 +119,163 @@ function isValidMove(start, end, king, i) {
         if (((start - end) == 9) || ((start - end) == 7) || ((start - end) == -9) || ((start - end) == -7)) {
             return true;
         }
+        else if (((start - end) == 18) || ((start - end) == 14) || ((start - end) == -18) || ((start - end) == -14) && board[start - ((start - end) / 2)] != 0) {
+            if (board[start - ((start - end) / 2)].identifier != i) {
+                board[start - ((start - end) / 2)] = 0;
+                return true;
+            }
+        }
+        else if (((start - end) == -36)) {
+            if ((board[start - 9] != 0) && (board[start - 27] != 0)) {
+                if ((board[start - 9].identifier != i) && (board[start - 27].identifier != i)) {
+                    board[start - 9] = 0;
+                    board[start - 27] = 0;
+                    return true;
+                }
+            }
+        }
+        else if (((start - end) == -28)) {
+            if ((board[start - 7] != 0) && (board[start - 21] != 0)) {
+                if ((board[start - 7].identifier != i) && (board[start - 21].identifier != i)) {
+                    board[start - 7] = 0;
+                    board[start - 21] = 0;
+                    return true;
+                }
+            }
+        }
+        else if (((start - end) == 36)) {
+            if ((board[begin + 9] != 0) && (board[begin + 27] != 0)) {
+                if ((board[begin + 9].identifier != i) && (board[begin + 27].identifier != i)) {
+                    board[begin + 9] = 0;
+                    board[begin + 27] = 0;
+                    return true;
+                }
+            }
+        }
+        else if (((start - end) == 28)) {
+            if ((board[start + 7] != 0) && (board[start + 21] != 0)) {
+                if ((board[start + 7].identifier != i) && (board[start + 21].identifier != i)) {
+                    board[start + 7] = 0;
+                    board[start + 21] = 0;
+                    return true;
+                }
+            }
+        }
+        else if (((start - end) == 32)) {
+            if (board[start - 9] != 0 && board[start - 25] != 0 && board[start - 18] == 0) {
+                if (board[start - 9].identifier != i && board[start - 25].identifier != i) {
+                    return true;
+                }
+            }
+            else if (board[start - 7] != 0 && board[start - 23] != 0 && board[start - 14] == 0) {
+                if (board[start - 7].identifier != i && board[start - 23].identifier != i) {
+                    return true;
+                }
+            }
+        }
+        else if (((start - end) == -32)) {
+            if (board[start + 9] != 0 && board[start + 25] != 0 && board[start + 18] == 0) {
+                if (board[start + 9].identifier != i && board[start + 25].identifier != i) {
+                    return true;
+                }
+            }
+            else if (board[start + 7] != 0 && board[start + 23] != 0 && board[start + 14] == 0) {
+                if (board[start + 7].identifier != i && board[start + 23].identifier != i) {
+                    return true;
+                }
+            }   
+        }
     }
     else { 
         if (i == RED_PIECE) {
             if ((start - end == -9) || (start - end == -7)) {
                 return true;
             }
-            else {
-                return false;
+            else if (((start - end) == -18) || ((start - end) == -14)) {
+                if (board[start - ((start - end) / 2)] != 0) {
+                    if (board[start - ((start - end) / 2)].identifier != i) {
+                        board[start - ((start - end) / 2)] = 0;
+                        return true;
+                    }
+                }
+            }
+            else if (((start - end) == -36)) {
+                if ((board[start - 9] != 0) && (board[start - 27] != 0)) {
+                    if ((board[start - 9].identifier != i) && (board[start - 27].identifier != i)) {
+                        board[start - 9] = 0;
+                        board[start - 27] = 0;
+                        return true;
+                    }
+                }
+            }
+            else if (((start - end) == -28)) {
+                if ((board[start - 7] != 0) && (board[start - 21] != 0)) {
+                    if ((board[start - 7].identifier != i) && (board[start - 21].identifier != i)) {
+                        board[start - 7] = 0;
+                        board[start - 21] = 0;
+                        return true;
+                    }
+                }
+            }
+            else if (((start - end) == -32)) {
+                if (board[start + 9] != 0 && board[start + 25] != 0 && board[start + 18] == 0) {
+                    if (board[start + 9].identifier != i && board[start + 25].identifier != i) {
+                        board[start + 9] = 0;
+                        board[start + 25] = 0;
+                        return true;
+                    }
+                }
+                else if (board[start + 7] != 0 && board[start + 23] != 0 && board[start + 14] == 0) {
+                    if (board[start + 7].identifier != i && board[start + 23].identifier != i) {
+                        board[start + 7] = 0;
+                        board[start + 23] = 0;
+                        return true;
+                    }
+                }   
             }
         }
         else if (i == BLACK_PIECE) {
             if ((start - end == 9) || (start - end == 7)) {
                 return true;
             }
-            else {
-                return false;
+            else if (((start - end) == 18) || ((start - end) == 14)) {
+                if (board[start - ((start - end) / 2)] != 0) {
+                    if (board[start - ((start - end) / 2)].identifier != i) {
+                        board[start - ((start - end) / 2)] = 0;
+                        return true;                        
+                    }
+                }
+            }
+            else if (((start - end) == 36) || ((start - end) == 21) && board[start - ((start - end) / 2)] != 0) {
+                if (board[start - ((start - end) / 2)].identifier != i) {
+                    board[start - ((start - end) / 2)] = 0;
+                    return true;
+                }
+            }
+            else if (((start - end) == 28)) {
+                if ((board[start - 7] != 0) && (board[start - 21] != 0)) {
+                    if ((board[start - 7].identifier != i) && (board[start - 21].identifier != i)) {
+                        board[start - 7] = 0;
+                        board[start - 21] = 0;
+                        return true;
+                    }
+                }
+            }
+            else if (((start - end) == 32)) {
+                if (board[start - 9] != 0 && board[start - 25] != 0 && board[start - 18] == 0) {
+                    if (board[start - 9].identifier != i && board[start - 25].identifier != i) {
+                        board[start - 9] = 0;
+                        board[start - 25] = 0;
+                        return true;
+                    }
+                }
+                else if (board[start - 7] != 0 && board[start - 23] != 0 && board[start - 14] == 0) {
+                    if (board[start - 7].identifier != i && board[start - 23].identifier != i) {
+                        board[start - 7] = 0;
+                        board[start - 23] = 0;
+                        return true;
+                    }
+                }
             }
         }
     
@@ -74,12 +284,16 @@ function isValidMove(start, end, king, i) {
 }
 
 class Piece {
-    constructor(srcNorm, srcKing, s) {
+    constructor(srcNorm, srcKing, srcNormSel, srcKingSel, s) {
         this.srcNorm = srcNorm;
         this.srcKing = srcKing;
+        this.srcNormSel = srcNormSel;
+        this.srcKingSel = srcKingSel;
         this.pos = s;
         this.isKing = false;
         this.identifier = 0;
+        this.currNorm = srcNorm;
+        this.currKing = srcKing;
     }
     move(s) {
         board[pos] = 0;
@@ -89,10 +303,10 @@ class Piece {
 
     init() {
         if (this.isKing) {
-            ctx.drawImage(this.srcKing, (this.pos % 8) * 601/8, parseInt(this.pos / 8) * 601/8);
+            ctx.drawImage(this.currKing, (this.pos % 8) * canvasWidth/8, parseInt(this.pos / 8) * canvasWidth/8, canvasWidth/8, canvasWidth/8);
         }
         else {
-            ctx.drawImage(this.srcNorm, (this.pos % 8) * 601/8, parseInt(this.pos / 8) * 601/8);
+            ctx.drawImage(this.currNorm, (this.pos % 8) * canvasWidth/8, parseInt(this.pos / 8) * canvasWidth/8, canvasWidth/8, canvasWidth/8);
         }
     }
 
@@ -112,57 +326,64 @@ class Piece {
 };
 
 class RedPiece extends Piece {
-    constructor(srcNorm, srcKing, s) {
-        super(srcNorm, srcKing, s);
+    constructor(srcNorm, srcKing, srcNormSel, srcKingSel, s) {
+        super(srcNorm, srcKing, srcNormSel, srcKingSel, s);
         this.identifier = RED_PIECE;
+    }
+
+    select() {
+        this.currKing = this.srcKingSel;
+        this.currNorm = this.srcNormSel;
+    }
+
+    unselect() {
+        this.currKing = this.srcKing;
+        this.currNorm = this.srcNorm;
     }
 };
 
 class BlackPiece extends Piece {
-    constructor(srcNorm, srcKing, s) {
-        super(srcNorm, srcKing, s);
+    constructor(srcNorm, srcKing, srcNormSel, srcKingSel, s) {
+        super(srcNorm, srcKing, srcNormSel, srcKingSel, s);
         this.identifier = BLACK_PIECE;
+    }
+
+    select() {
+        this.currKing = this.srcKingSel;
+        this.currNorm = this.srcNormSel;
+    }
+
+    unselect() {
+        this.currKing = this.srcKing;
+        this.currNorm = this.srcNorm;
     }
 };
 
 function drawBoard() {
-    for (let x = 0; x < 601; x += 601/4) {
-        for (let y = 0; y < 601; y += 601/4) {
-            ctx.rect(x, y, 601/8, 601/8);
-            ctx.rect(x+(601/8), y+(601/8), 601/8, 601/8);
+    for (let x = 0; x < canvasWidth; x += canvasWidth/4) {
+        for (let y = 0; y < canvasWidth; y += canvasWidth/4) {
+            ctx.rect(x, y, canvasWidth/8, canvasWidth/8);
+            ctx.rect(x+(canvasWidth/8), y+(canvasWidth/8), canvasWidth/8, canvasWidth/8);
             ctx.fill();
         }
     }
 }
 
 function drawPieces() {
-    var blackKing = document.createElement('img');
-    blackKing.src = "images/black-king.png";
-    blackKing.style.position = "absolute";
-    var blackNorm = document.createElement('img');
-    blackNorm.src = "images/black-norm.png";
-    blackNorm.style.position = "absolute";
-    var redKing = document.createElement('img');
-    redKing.src = "images/red-king.png";
-    redKing.style.position = "absolute";
-    var redNorm = document.createElement('img');
-    redNorm.src = "images/red-norm.png";8
-    redNorm.style.position = "absolute";
-
     for (let x = 0; x < 23; x += 2) {
         if ((x > 6) && (x < 16)) {
-            board[x+1] = new RedPiece(redNorm, redKing, x + 1);
+            board[x+1] = new RedPiece(redNorm, redKing, redNormSel, redKingSel, x + 1);
         }
         else {
-            board[x] = new RedPiece(redNorm, redKing, x);
+            board[x] = new RedPiece(redNorm, redKing, redNormSel, redKingSel, x);
         }
     }
     for (let x = 40; x < 63; x += 2) {
         if ((x > 46) && (x < 56)) {
-            board[x] = new BlackPiece(blackNorm, blackKing, x);
+            board[x] = new BlackPiece(blackNorm, blackKing, blackNormSel, blackKingSel, x);
         }
         else {
-            board[x+1] = new BlackPiece(blackNorm, blackKing, x + 1);
+            board[x+1] = new BlackPiece(blackNorm, blackKing, blackNormSel, blackKingSel, x + 1);
         }
     }
 }
@@ -202,33 +423,71 @@ function checkForKing() {
 }
 
 c.addEventListener("mousedown", function(e) {
-    console.log("before: " + activePiece);
     let mousePos = getMousePosition(c, e);
     if (activePiece == -1) {
-        if (isOddRow(convertCoordsToIndex(parseInt(mousePos.x / (601/8)), parseInt(mousePos.y / (601/8))))) {
-            if (board[convertCoordsToIndex(parseInt(mousePos.x / (601/8)), parseInt(mousePos.y / (601/8)))] != 0) {      // if is valid square
-                activePiece = convertCoordsToIndex(parseInt(mousePos.x / (601/8)), parseInt(mousePos.y / (601/8)));
+        if (isOddRow(convertCoordsToIndex(parseInt(mousePos.x / (canvasWidth/8)), parseInt(mousePos.y / (canvasWidth/8))))) {
+            if (board[convertCoordsToIndex(parseInt(mousePos.x / (canvasWidth/8)), parseInt(mousePos.y / (canvasWidth/8)))] != 0) {      // if is valid square
+                activePiece = convertCoordsToIndex(parseInt(mousePos.x / (canvasWidth/8)), parseInt(mousePos.y / (canvasWidth/8)));
+                if (board[activePiece].identifier != turn) {
+                    activePiece = -1;
+                }
+                else {
+                    board[activePiece].select();
+                    animateAll();
+                }
             } 
         }
         else {
-            if (((mousePos.x) % (601/4) < (601/8)) && board[convertCoordsToIndex(parseInt(mousePos.x / (601/8)))] != 0) {      // if is valid square
-                activePiece = convertCoordsToIndex(parseInt(mousePos.x / (601/8)), parseInt(mousePos.y / (601/8)));
+            if (((mousePos.x) % (canvasWidth/4) < (canvasWidth/8)) && board[convertCoordsToIndex(parseInt(mousePos.x / (canvasWidth/8)))] != 0) {      // if is valid square
+                activePiece = convertCoordsToIndex(parseInt(mousePos.x / (canvasWidth/8)), parseInt(mousePos.y / (canvasWidth/8)));
+                if (board[activePiece].identifier != turn) {
+                    activePiece = -1;
+                }
+                else {
+                    board[activePiece].select();
+                    animateAll();
+                }
             }
         }
     }
     else {
-        if (turn == board[activePiece].identifier) {
-            if (isValidMove(activePiece, convertCoordsToIndex(parseInt(mousePos.x / (601/8)), parseInt(mousePos.y / (601/8))), board[activePiece].isKing, board[activePiece].identifier)) {
-                board[activePiece].moveToSquare(convertCoordsToIndex(parseInt(mousePos.x / (601/8)), parseInt(mousePos.y / (601/8))));
-                activePiece = -1;
-                changeTurn();
+        if (isValidMove(activePiece, convertCoordsToIndex(parseInt(mousePos.x / (canvasWidth/8)), parseInt(mousePos.y / (canvasWidth/8))), board[activePiece].isKing, board[activePiece].identifier)) {
+            board[activePiece].unselect();
+            board[activePiece].moveToSquare(convertCoordsToIndex(parseInt(mousePos.x / (canvasWidth/8)), parseInt(mousePos.y / (canvasWidth/8))));
+            activePiece = -1;
+            if (colorWins(turn)) {
+                if (turn == RED_PIECE) {
+                    winRed();
+                }
+                else {
+                    winBlack();
+                }
             }
+            changeTurn();
         }
         else {
+            board[activePiece].unselect();
             activePiece = -1;
+            animateAll();
         }
     }
 });
 
 drawPieces();
 animateAll();
+
+document.body.onresize = (event) => {
+    if (window.innerWidth > window.innerHeight) {
+        ctx.canvas.width = window.innerHeight * .9;
+        ctx.canvas.height = window.innerHeight * .9;
+    
+        canvasWidth = window.innerHeight * .9;
+    }
+    else {
+        ctx.canvas.width = window.innerWidth * .9;
+        ctx.canvas.height = window.innerWidth * .9;
+    
+        canvasWidth = window.innerWidth * .9;
+    }
+    animateAll();
+};

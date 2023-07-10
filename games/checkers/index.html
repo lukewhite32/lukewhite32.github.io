@@ -3,12 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Test game</title>
+        <title>Checkers - Singleplayer</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <canvas id="the-canvas" width="600" height="600"></canvas>
-        <h3 id="turn">Black's turn</h3>
+        <div id="winner-page"><h1 id="winner"></h1><h3>Click <a href=".">here</a> to play again!</h3></div>
+        <div id="main-content">
+            <canvas id="the-canvas"></canvas>
+            <h3 id="turn">Black's turn</h3>
+        </div>
         <script src="main.js"></script>
     </body>
 </html>

@@ -16,9 +16,11 @@
     </head>
     <body>
         <h1>Tic-Tac-Toe!</h1>
-        <button id="gamemode" onclick="window.location.href = 'singleplayer';">Single-Player</button>
-        <button id="gamemode" onclick="window.location.href = 'multiplayer';">Multi-Player</button>
-        <button id="gamemode" onclick="window.location.href = 'ai';">Against AI</button>
+        <div id="gamemode-container">
+            <div><button class="gamemode" onclick="window.location.href = 'singleplayer';">Single-Player</button></div>
+            <div><button class="gamemode" onclick="window.location.href = 'multiplayer';">Multi-Player</button></div>
+            <div><button class="gamemode" onclick="window.location.href = 'ai';">Against Computer</button></div>
+        </div>
         <script src="main.js"></script>
     </body>
 </html>

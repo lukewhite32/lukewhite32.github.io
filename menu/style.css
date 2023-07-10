@@ -89,6 +89,12 @@ a:hover {
     min-width: 100px;
 }
 
+#games-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 #end-page {
     font-family: Cantarell;
     background-color: black;
