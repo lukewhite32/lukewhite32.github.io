@@ -10,11 +10,11 @@ body {
 }
 
 button {
-    position: relative;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-top: 10px;
 }
 
 a {
@@ -57,7 +57,6 @@ a:hover {
 }
 
 #main-page {
-    text-align: left;
     line-height: 2em;
     word-spacing: 3px;
     font-family: Cantarell;
@@ -89,10 +88,21 @@ a:hover {
     min-width: 100px;
 }
 
+#main-page .table-of-contents-button {
+    border: 2px dotted black; 
+    background-color: white; 
+    font-size: 1.2em;
+    transition: .25s box-shadow;
+}
+
 #games-list {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.about-img {
+    margin-left: 50px;
 }
 
 #end-page {
@@ -108,4 +118,9 @@ a:hover {
     font-size: 20px;
     color: white;
     padding-top: 15px;
+}
+
+video {
+    border: 5px solid black;
+    margin-left: 20px;
 }

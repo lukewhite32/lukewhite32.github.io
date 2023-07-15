@@ -10,6 +10,14 @@ function resetButtonColors(buttonObj) {
     buttonObj.style.color = "white";
 }
 
+function shadowBoxButton(buttonObj) {
+    buttonObj.style.boxShadow = "5px 5px 5px black";
+}
+
+function unshadowBoxButton(buttonObj) {
+    buttonObj.style.boxShadow = "0px 0px 0px black";
+}
+
 webSock.addEventListener('message', function (message) {
     if (message.data == "S:0") {
         document.getElementById("submit-error").innerHTML = "Wait! You are submitting reports too fast!";
@@ -42,3 +50,13 @@ function submitReport(text) {
         }
     }
 }
+
+function isInViewport(element) {    // thanks internet
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}  

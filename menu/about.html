@@ -12,6 +12,9 @@
         <title>My Github website</title>
         <link rel="stylesheet" href="style.css" />
 
+        <!--  Icons  -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
         <script src="main.js"></script>
     </head>
     <body>
@@ -28,19 +31,49 @@
             <h1>About me</h1>
             <h2 style="padding-left: 3%;">Table of Contents</h2>
             <ul>
-                <li><button style="border: 0; background-color: white; font-size: 1.2em;" onclick="document.getElementById('intro-header').scrollIntoView();">Intro</button></li>
-                <li><button style="border: 0; background-color: white; font-size: 1.2em;" onclick="document.getElementById('firestorm-robotics-header').scrollIntoView();">Joining Firestorm</button></li>
+                <li><button onmouseover="shadowBoxButton(this)" onmouseleave="unshadowBoxButton(this)" class="table-of-contents-button" onclick="document.getElementById('intro-header').scrollIntoView();">Intro</button></li>
+                <li><button onmouseover="shadowBoxButton(this)" onmouseleave="unshadowBoxButton(this)" class="table-of-contents-button" onclick="document.getElementById('firestorm-robotics-header').scrollIntoView();">Joining Firestorm</button></li>
             </ul>
             <h1 id="intro-header">Intro</h1>
             <p>Meet me: Luke White (often referred to as Pookie, don't ask). I'm (currently) a 13 year old who has a passion for programming. I'm currently member of <a href="http://firestormrobotics.org/">Firestorm Robotics</a>, <a href="https://www.firstinspires.org/robotics/frc">FRC</a> team 6341. I first started programming when my dad bought me a Python book. I loved it, but after I had completed the book, I didn't know how to continue programming. Fast forward to September of 2022 when a friend invited me to join a local robotics club. I was eager to join, not knowing what to expect of the club.</p>
             <h1 id="firestorm-robotics-header">My time with Firestorm Robotics</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<!--When I first walked into the <a href="cherokeemakerspace.org">robotics building</a>, I looked around in awe and knew this was my kind of place. The lead programmer met me and eventually got me started on C++. Being a young programmer who only had some Python experience, C++ seemed <i>really</i> complicated. But after a few months, I was pretty fluent with it. So, when the <a href="https://www.youtube.com/watch?v=0zpflsYc4PA">2023 FRC season</a> came up, I felt ready to finally help out with the robot code. We all knew that this game would be code-reliant, and with our design, complicated math. --></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<!--There were many times when we felt like giving up, and while I didn't spend nearly as much time as others, we had a lot of times where we spend all day refining and debugging the robot. Finally, the night before the competition, we discovered something devestating.--></p>
+            <p>When I first walked into the <a href="cherokeemakerspace.org">robotics building</a>, I looked around and was immediately interested. The lead programmer met me and eventually got me started on C++. Being a young programmer who only had some Python experience, C++ seemed <i>really</i> complicated. But, after a few months, I was pretty fluent with it. So, when the <a href="https://www.youtube.com/watch?v=0zpflsYc4PA">2023 FRC season</a> came up, I felt ready to finally help out with the robot code. We all knew that this game would be code-reliant, and, with our design, complicated math.</p>
+            
+            <a href="https://www.firestormrobotics.org"><img class="about-img" width="300" height="234.75" src="../images/firestorm-logo.png" /></a>
+            <a href="https://www.cherokeemakerspace.org"><img class="about-img" src="../images/cherokee-makerspace.png" /></a>
+
+            <video width="420" height="240" title="FRC 2023 Game Reveal" controls muted>
+                <source src="../video/frc-2023-game-reveal.mp4" type="video/mp4"/>
+                An error occured when loading this video!
+            </video>
+            <p>There were many times when we felt like giving up, and while I didn't spend nearly as much time as others, we had a lot of times where we spend all day refining and debugging the robot. Finally, the night before the competition, we discovered something devestating.Our arm design was a four-bar, which relied on 2 motors and 2 sensors. However, there was a bug in the code which prevented one of the motors from running at full capacity. The easiest solution was just to lock the part of the arm that wasn't working, which meant that we were limited to the amount of game pieces that we could pick up. I had left early, but the rest of the team had stayed there till past midnight! We'd known not to get our hopes up, but we'd do our best.</p>
+            <h3>The Dalton Event</h3>
+            <p>Our first robotics event was in Dalton, GA. I was not sure how the competition would turn out, but I couldn't have predicted the ending. Each match starts out as 15s in Autonomous (where the robots are completely reliant on code) and the next 2m and 15s in Teleop (where the robots are controlled by humans). Each robot has to get inspected to make sure it is safe to put on the field. Our inspection took almost an hour! This meant that we couldn't test any of our components to our robot, which is why on our first match, we realized a fatal issue. Our robot has a swerve drive, which had 4 wheels; each wheel can go back and forth, but also can turn. This allows up to go in any direction without turning our robot's orientation. The sensors that know where the wheel's position is were not working, so when the robot got enabled, it spun out of control!</p>
+            <p>We tackled a bunch of other issues, but after a while, we had fixed them. By then, however, we were at the bottom of the leaderboard. I had no hope of us doing well, but then, we discovered something amazing. One of the tasks during Autonomous was to balance on a ramp (see video for details), which earned our team 12 points. We had written code that allowed us to auto-balance, but with all our issues, we hadn't had a time to test it out. The code was easy to write, so I had expected other teams to do the same. Little did we know that that one task would carry our team to 3rd place. </p>
+            <p>Enter in Qualifying match 24; our first successful auto ramp! We were all excited, knowing we might have a chance after all. We went on to win most of our matches, slowly ranking ourselves up to 3rd place! No one could have predicted that a small, 12 point task would have carried us that far. I was so glad that our team was actually doing well, and despite last night's discovery, we had actually managed to place some game pieces. After the event, our team had won the Innovation in Control award for our auto-ramping capabilities and our swerve drive code.</p>
+            <video width="500" height="300" title="Our first auto-balance!" controls muted>
+                <source src="../video/first-auto-balance.mp4" type="video/mp4" />
+                An error occured when loading this video!
+            </video>
+            <img class="about-img" src="../images/innovation-in-control.png" width="500" height="310" />
         </div>
         <div id="end-page">
             <a href="mailto:lukebenwhite32@gmail.com">Email</a>
             <a href="https://github.com/lukewhite32">Github</a>
         </div>
-        <script>highlightButton(document.getElementById("about"))</script>
+        <script>
+            highlightButton(document.getElementById("about"));
+     
+            document.body.onscroll = function () {
+                document.querySelectorAll("video").forEach(vid => {
+                    if (isInViewport(vid)) {
+                        vid.play();
+                    }
+                    else {
+                        vid.pause();
+                    }
+                });
+            }    
+        </script>
     </body>
 </html>
