@@ -3,7 +3,7 @@ const BLACK_PIECE = 2;
 var canvasWidth;
 const c = document.getElementById("the-canvas");
 const ctx = c.getContext("2d");
-document.querySelector('meta[http-equiv="refresh"]').setAttribute("content", "30");
+
 if (window.innerWidth > window.innerHeight) {
     ctx.canvas.width = window.innerHeight * .9;
     ctx.canvas.height = window.innerHeight * .9;
