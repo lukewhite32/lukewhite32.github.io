@@ -1,0 +1,56 @@
+@font-face {
+    font-family: Cantarell;
+    src: url("../../fonts/Cantarell-VF.otf");
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-size: 100%;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+pre {
+    font-family: Cantarell;
+    font-size: 1.2em;
+}
+
+#main-content {
+    font-family: Cantarell;
+}
+
+#main-content #top-bar {
+    display: flex;
+    flex-direction: horizontal;
+    justify-content: space-evenly;
+    border-bottom: 1px solid black;
+}
+
+#main-content #top-bar button {
+    border: 0;
+    background-color: rgba(255, 192, 203, 0.493);
+    padding: 10px;
+    margin-top: 5px;
+    transition: .5s padding;
+    margin-bottom: 3px;
+}
+
+#main-content #food-list {
+    width: 50%;
+    border-bottom: 2px solid black;
+}
+
+#end-page {
+    margin-top: 10px;
+}
+
+#login {
+    display: none;
+}

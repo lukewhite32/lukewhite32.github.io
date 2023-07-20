@@ -1,55 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Luke White">
-        <meta name="description" content="A food calender intended for planning out meals.">
-        <meta property="og:url" content="https://lukewhite32.github.io/foodapp">
-        <meta property="og:title" content="Food App">
-        <meta property="og:description" content="A food calender intended for planning out meals.">
-
         <link rel="stylesheet" href="style.css" />
-        <title>Food App - Login</title>
+        <title>Food App - Main</title>
+        <meta charset="utf-8">
     </head>
     <body>
-        <h3 id="connect-status"></h3>
-        <div id="everything">
-            <h1>Food App</h1>
-            <div class="break"></div>
-            <div class="grid-container"></div> 
-            <button id="shuffle">Shuffle</button>
-            <div class="break"></div>
-            <h3>Add item</h3>
-            <label>Enter in the name:</label>
-            <input type="text" id="item-text">
-            <p></p> 
-            <button id="add-as-breakfast">Add as breakfast</button>
-            <button id="add-as-lunch">Add as lunch</button>
-            <button id="add-as-dinner">Add as dinner</button>
-            <h3>Remove Item</h3>
-            <label>Enter in the item to remove:</label>
-            <select id="remove-select">
-                <optgroup label="Breakfast" id="breakfast-optgroup"></optgroup>
-                <optgroup label="Lunch" id="lunch-optgroup"></optgroup>
-                <optgroup label="Dinner" id="dinner-optgroup"></optgroup>
-            </select>
-            <button id="remove-button">Remove</button>
-            <div class="end"></div>
+        <h1>Food App</h1>
+        <div id="options">
+            <button onclick="window.location.href='monthly'">View monthly items</button>
+            <button onclick="window.location.href='weekly'">View weekly items</button>
         </div>
-        <div id="login">
-            <h1>Woah there!</h1>
-            <p>I believe I have neglected to mention that this page is <b>off limits!</b> (unless, of course, you have a username and password!) Please enter below:</p>
-            <div>
-                <label>Username:</label>
-                <input type="text" id="login-username">
-            </div>
-            <div>
-                <label>Password:</label>
-                <input type="password" id="login-password">
-            </div>
-            <button id="login-button">Login</button>
-        </div>
-        <script src="main.js"></script>
     </body>
 </html>

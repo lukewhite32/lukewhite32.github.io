@@ -200,19 +200,19 @@ function isValidMove(start, end, king, i) {
                 }
             }
             else if (((start - end) == -36)) {
-                if ((board[start - 9] != 0) && (board[start - 27] != 0)) {
-                    if ((board[start - 9].identifier != i) && (board[start - 27].identifier != i)) {
-                        board[start - 9] = 0;
-                        board[start - 27] = 0;
+                if ((board[start + 9] != 0) && (board[start + 27] != 0)) {
+                    if ((board[start + 9].identifier != i) && (board[start + 27].identifier != i)) {
+                        board[start + 9] = 0;
+                        board[start + 27] = 0;
                         return true;
                     }
                 }
             }
             else if (((start - end) == -28)) {
-                if ((board[start - 7] != 0) && (board[start - 21] != 0)) {
-                    if ((board[start - 7].identifier != i) && (board[start - 21].identifier != i)) {
-                        board[start - 7] = 0;
-                        board[start - 21] = 0;
+                if ((board[start + 7] != 0) && (board[start + 21] != 0)) {
+                    if ((board[start + 7].identifier != i) && (board[start + 21].identifier != i)) {
+                        board[start + 7] = 0;
+                        board[start + 21] = 0;
                         return true;
                     }
                 }
@@ -242,14 +242,17 @@ function isValidMove(start, end, king, i) {
                 if (board[start - ((start - end) / 2)] != 0) {
                     if (board[start - ((start - end) / 2)].identifier != i) {
                         board[start - ((start - end) / 2)] = 0;
-                        return true;                        
+                        return true;
                     }
                 }
             }
-            else if (((start - end) == 36) || ((start - end) == 21) && board[start - ((start - end) / 2)] != 0) {
-                if (board[start - ((start - end) / 2)].identifier != i) {
-                    board[start - ((start - end) / 2)] = 0;
-                    return true;
+            else if (((start - end) == 36)) {
+                if ((board[start - 9] != 0) && (board[start - 27] != 0)) {
+                    if ((board[start - 9].identifier != i) && (board[start - 27].identifier != i)) {
+                        board[start - 9] = 0;
+                        board[start - 27] = 0;
+                        return true;
+                    }
                 }
             }
             else if (((start - end) == 28)) {
@@ -261,7 +264,7 @@ function isValidMove(start, end, king, i) {
                     }
                 }
             }
-            else if (((start - end) == 32)) {
+            else if (((start - end) == -32)) {
                 if (board[start - 9] != 0 && board[start - 25] != 0 && board[start - 18] == 0) {
                     if (board[start - 9].identifier != i && board[start - 25].identifier != i) {
                         board[start - 9] = 0;
@@ -275,7 +278,7 @@ function isValidMove(start, end, king, i) {
                         board[start - 23] = 0;
                         return true;
                     }
-                }
+                }   
             }
         }
     
