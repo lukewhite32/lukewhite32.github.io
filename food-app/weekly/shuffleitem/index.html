@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Luke White">
+        <meta name="description" content="Shuffle the items for the food app">
+
+        <meta property="og:title" content="Food app - Shuffle items">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://lukewhite32.github.io/food-app/shuffleitem">
+        <meta property="og:description" content="Shuffle the items for the food app">
+        <meta property="og:image" content="">
+        <meta property="og:sitename" content="Food app">
+
+        <meta property="twitter:title" content="Food app - Shuffle items">
+        <meta property="twitter:description" content="Shuffle the items for the food app">
+        <meta property="twitter:image" content="">
+        <meta property="twitter:creator" content="Luke White">
+        <meta property="twitter:card" content="summary">
+
+        <link rel="canonical" href="https://lukewhite32.github.io/food-app/shuffleitem">
+        <link rel="stylesheet" href="style.css">
+        <title>Food app - Shuffle items</title>
+        <script>
+            var webSock = new WebSocket("wss://swaous.asuscomm.com/pookie/foodapp/foods");
+            if (document.cookie != "user=ella") {
+                window.location.href = "../../notloggedin";
+            }
+            function shuffleItems() {
+                if (webSock.readyState == WebSocket.CLOSED) {
+                    alert("Could not connect to server. Try again.")
+                }
+                else {
+                    webSock.send("shuffle");
+                    alert("Shuffled all items.")
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="window.location.href='../'">Head back</button>
+        <h1>Warning</h1>
+        <p>Shuffling items will reset all food items. Are you sure you would like to continue?</p>
+        <button onclick="shuffleItems">Confirm</button>
+        <script src="main.js"></script>
+    </body>
+</html>

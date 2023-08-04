@@ -1,56 +1,72 @@
-@font-face {
-    font-family: Cantarell;
-    src: url("../../fonts/Cantarell-VF.otf");
-}
-
 html {
     height: 100%;
     width: 100%;
 }
 
 body {
+    font-family: Cantarell;
     background-size: 100%;
     height: 100%;
 }
 
-h1 {
+pre {
+    font-family: Cantarell;
+}
+
+h1, h3 {
     text-align: center;
 }
 
-pre {
-    font-family: Cantarell;
-    font-size: 1.2em;
+button:hover {
+    cursor: pointer;
+    
 }
 
-#main-content {
-    font-family: Cantarell;
-}
-
-#main-content #top-bar {
+#top-bar {
     display: flex;
-    flex-direction: horizontal;
+    flex-direction: row;
     justify-content: space-evenly;
     border-bottom: 1px solid black;
 }
 
-#main-content #top-bar button {
+#button-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+#button-header button {
+    border-radius: 0; 
+    border: 0; 
+    background-color:rgba(255, 192, 203, 0.493); 
+    padding: 3px;
+}
+
+#top-bar button {
     border: 0;
     background-color: rgba(255, 192, 203, 0.493);
-    padding: 10px;
+    padding: 6px;
     margin-top: 5px;
     transition: .5s padding;
     margin-bottom: 3px;
 }
 
-#main-content #food-list {
+#food-list {
     width: 50%;
     border-bottom: 2px solid black;
+    font-size: .9em;
 }
 
-#end-page {
+#date {
     margin-top: 10px;
+    text-align: center;
 }
 
-#login {
+#main-content {
     display: none;
+}
+
+#login-status {
+    color: red;
 }

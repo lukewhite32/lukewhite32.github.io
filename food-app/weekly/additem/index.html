@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Luke White">
+        <meta name="description" content="Add an item to the food app">
+
+        <meta property="og:title" content="Food app - Add item">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://lukewhite32.github.io/food-app/weekly/additem">
+        <meta property="og:description" content="Add an item to the food app">
+        <meta property="og:image" content="">
+        <meta property="og:sitename" content="Food app">
+
+        <meta property="twitter:title" content="Food app - Add item">
+        <meta property="twitter:description" content="Add an item to the food app">
+        <meta property="twitter:image" content="">
+        <meta property="twitter:creator" content="Food app - Add item">
+        <meta property="twitter:card" content="summary">
+
+        <link rel="canonical" href="https://lukewhite32.github.io/food-app/weekly/additem">
+        
+        <link rel="stylesheet" href="/fonts.css" />
+        <link rel="stylesheet" href="style.css">
+        <title>Food app - Add item</title>
+
+        <script>
+            const webSock = new WebSocket("wss://swaous.asuscomm.com/pookie/foodapp/foods");
+            function sendToWebsock(c, text) {
+                if (text.indexOf(":") == -1 && text.indexOf(";") == -1) {
+                    if (webSock.readyState == WebSocket.CLOSED) {
+                        return false;
+                    }
+                    webSock.send("a;" + c + text);
+                    document.getElementById("item").innerText = "";
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+
+            if (document.cookie != "user=ella") {
+                alert(document.cookie);
+                window.location.href = "../../notloggedin";
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Add an item</h1>
+        <label>Enter in a name:</label>
+        <input type="text" id="item"/>
+        <div></div>
+        <label>Enter in a course:</label>
+        <select name="Enter a course" id="course">
+            <option value="b:">Breakfast</option>
+            <option value="l:">Lunch</option>
+            <option value="d:">Dinner</option>
+        </select>
+        <div></div>
+        <button onclick="
+        if (!sendToWebsock(document.getElementById('course').value, document.getElementById('item').value)) {
+            if (webSock.readyState == WebSocket.CLOSED) {
+                alert('Could not connect. Try again')
+            }
+            else {
+                alert('The text cannot contain : or ;')
+            }
+        }
+        else {
+            alert('Success!')
+        }" style="padding: 10px;">Submit</button>
+    </body>
+</html>
