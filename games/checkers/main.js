@@ -1,5 +1,6 @@
 const RED_PIECE = 1;
 const BLACK_PIECE = 2;
+const EMPTY = 3;
 var canvasWidth;
 const c = document.getElementById("the-canvas");
 const ctx = c.getContext("2d");
@@ -297,6 +298,7 @@ class Piece {
         this.identifier = 0;
         this.currNorm = srcNorm;
         this.currKing = srcKing;
+        this.isSelected = false;
     }
     move(s) {
         board[pos] = 0;
@@ -363,9 +365,15 @@ class BlackPiece extends Piece {
 };
 
 function drawBoard() {
+    let square = 0;
     for (let x = 0; x < canvasWidth; x += canvasWidth/4) {
         for (let y = 0; y < canvasWidth; y += canvasWidth/4) {
             ctx.rect(x, y, canvasWidth/8, canvasWidth/8);
+            if (board[square] != 0) {
+                
+            }
+            square += 1;
+
             ctx.rect(x+(canvasWidth/8), y+(canvasWidth/8), canvasWidth/8, canvasWidth/8);
             ctx.fill();
         }
