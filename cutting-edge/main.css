@@ -56,7 +56,7 @@ img {
     cursor: pointer;
 }
 
-#top-img  img {
+#top-img img {
     width: 100%;
 }
 
@@ -66,16 +66,28 @@ img {
     text-align: center;
     font-family: "Alfacad Flux";
     background-color: rgb(234, 234, 234);
-    padding: 10%;
-    font-size: 1.3em;
+    padding: 40px;
+    font-size: 1.6em;
+}
+
+#on-photo {
+    position: absolute;
+    font-family: "Alfacad Flux";
+    text-align: center;
+    width: 70%;
+    top: 300px;
+    font-size: 3.5em;
+    color: white;
 }
 
 /* Main Content */
 
 #main {
+    position: relative;
     font-family: "Alfacad Flux";
     font-size: 1.2em;
     line-height: 30px;
+    z-index: 2;
 }
 
 #main p, h2 {
