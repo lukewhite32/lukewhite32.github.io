@@ -7,24 +7,11 @@ var posts = [
         "link": "index.html"
     }`,
     `{
-        "title": "Title"
+        "title": "Calculator"
     }`,
     `{
-        "name": "My First Post", 
-        "link": "first-post.html"
-    }`,
-    `{
-        "name": "My Second Post", 
-        "link": "first-post.html"
-    }`,    `{
-        "name": "My Third Post", 
-        "link": "first-post.html"
-    }`,    `{
-        "name": "My Fourth Post", 
-        "link": "first-post.html"
-    }`,    `{
-        "name": "My Fifth Post", 
-        "link": "first-post.html"
+        "name": "Broken Calculator... Kinda",
+        "link": "broken-calculator.html"
     }`
 ]
 
