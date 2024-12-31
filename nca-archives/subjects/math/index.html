@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8">
+
+        <title>Blog by Luke White</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <link rel="stylesheet" href="../../main.css">
+
+        <script>const blogName = "Home";</script>
+
+    </head>
+    <body>
+        <div id="top">
+            <div id="nav">
+                <p>NCA Archives</p>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+        </div>
+        <i class="material-icons" id="toc-hamburger">
+            menu
+        </i>
+        <i class="material-icons" id="toc-close">
+            close
+        </i>
+        <div id="table-of-contents">
+        </div>
+
+        <div id="main">
+            <h1 id="top-header">Select Filters Below</h1>
+            <div style="display: flex; flex-direction: row; justify-content: baseline; width: 100%;">
+                <label for="search-date" style="margin-left: 20px;">Search By Date</label>
+                <input type="date" id="search-date" style="margin-left: 5px;">
+
+                <label for="search-name" style="margin-left: 20px;">Search By Name</label>
+                <input type="text" id="search-name" style="margin-left: 5px;">
+
+                <select name="grade" id="search-grade" style="margin-left: 20px;" onchange="search()">
+                    <option value="ninth">Ninth</option>
+                    <option value="tenth">Tenth</option>
+                    <option value="eleventh">Eleventh</option>
+                    <option value="twelfth">Twelfth</option>
+                </select>
+
+                <button id="load" onclick="search()">Search</button>
+            </div>
+            <div id="queried-content">
+                <p style="border-bottom: 2px solid black; margin-top: 15px;">Results</p>
+
+            </div>
+        </div>
+
+        <div id="images">
+
+        </div>
+
+        <script src="../../page.js"></script>
+        <script src="files.js"></script>
+        <!-- <script src="table-of-contents.js"></script> -->
+    </body>
+</html>

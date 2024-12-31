@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "Moderustic";
+    src: url("fonts/Moderustic/Moderustic-VariableFont_wght.ttf");
+}
+
+body {
+    font-family: "Moderustic";
+    text-align: center;
+
+    
+}
+
+#stuff {
+    margin-left: 10%;
+    margin-right: 10%;
+    border-top: 5px solid gray;
+
+    text-align: left;
+}

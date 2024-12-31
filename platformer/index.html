@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flappy Bird</title>
+    </head>
+    <body>
+        <div style="height: 100px; border-bottom: 1px solid black; text-align: center;">
+            <h1>Flappy Bird</h1>
+        </div>
+        <div id="canvas-container">
+            <canvas id="canvas" width="1000" height="500" style="border: 5px solid black;"></canvas>
+        </div>
+        <div id="values">
+            <label for="gravity">Gravity</label>
+            <input type="range" min="1" max="100" value="20" class="slider" id="gravity">
+            <br>
+            <label for="force">Force Upward</label>
+            <input type="range" min="0" max="20" value="5" class="slider" id="force">
+        </div>
+        <script src="camera.js"></script>
+        <script src="sprite.js"></script>
+        <script src="platform.js"></script>
+        <script src="level.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
