@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8">
+
+        <title>
+            Add A Post
+        </title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <link rel="stylesheet" href="main.css">
+
+        <script>
+            var jsonData;
+
+            function postData() {
+                alert("sending");
+                var date = document.getElementById("new-date").value;
+                var content = document.getElementById("new-content").value;
+                alert(date.split("-")[1] + "-" + date.split("-")[2] + "-" + date.split("-")[0]);
+                var toAdd = {
+                    name: date.split("-")[1] + "-" + date.split("-")[2] + "-" + date.split("-")[0],
+                    content: content
+                };
+                alert(JSON.stringify(toAdd));
+
+                fetch('http://127.0.0.1/upload', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(toAdd)
+                })
+                .then(response => response.json())
+                .then(data => console.log('Success:', data))
+                .catch(error => console.error('Error:', error));
+            }
+        </script>
+
+    </head>
+    <body>
+        <div id="top">
+            <div id="nav">
+                <p>Blog</p>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+        </div>
+        <i class="material-icons" id="toc-hamburger">
+            menu
+        </i>
+        <i class="material-icons" id="toc-close">
+            close
+        </i>
+        <div id="table-of-contents">
+            <div><div class="index-title"><p>Table Of Contents</p></div></div>
+            <div><div class="index"><a href="index.html"><p>Return Back</p></a></div></div>
+        </div>
+
+        <div id="main">
+            <h1 id="top-header">Add A Post</h1>
+            <label for="new-date" style="margin-left: 20px;">Select the date</label>
+            <input type="date" id="new-date">
+            <br>
+            <p><label for="new-content">Write content here</label></p>
+            <textarea style="margin-left: 20px; padding: 5px;" rows="7" cols="35" id="new-content"></textarea>
+            <br>
+            <button style="margin-left: 20px; padding: 10px;" onclick="postData()">Post</button>
+        </div>
+
+        <div id="images">
+
+        </div>
+    </body>
+</html>

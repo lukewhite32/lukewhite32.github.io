@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8">
+
+        <title>Personal Blog</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <link rel="stylesheet" href="main.css">
+
+        <script>var blogName = "Home";</script>
+
+    </head>
+    <body>
+        <div id="top">
+            <div id="nav">
+                <p>Blog</p>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+        </div>
+        <i class="material-icons" id="toc-hamburger">
+            menu
+        </i>
+        <i class="material-icons" id="toc-close">
+            close
+        </i>
+        <div id="table-of-contents">
+            <div><div class="index-title"><p>Table Of Contents</p></div> </div>
+            <div><div class="index"><a href="add.html"><p>Add new...</p></a></div></div>
+
+        </div>
+
+        <div id="main">
+            <h1 id="top-header">Personal Blog</h1>
+            <!-- <p>Welcome to my blog! Here, both <a href="https://github.com/lukewhite32">Luke White</a> and Sheperd Penner post about tech projects, ranging from calculator programs to web development to 3D printing! Feel free to look around to see if anything interests you. </p> -->
+        </div>
+
+        <div id="images">
+            
+        </div>
+
+
+
+        <script>
+            function changeContent(newContent, newName) {
+                document.getElementById("main").innerHTML = "<h1>" + newName + "</h1>" + "<p>" + newContent + "</p>";
+            }
+        </script>
+
+        <script src="page.js"></script>
+        <script src="table-of-contents.js"></script>
+    </body>
+</html>
