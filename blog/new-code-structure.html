@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8">
+
+        <title>Blog by Luke White</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <link rel="stylesheet" href="main.css">
+
+        <script>const blogName = "New Code Structure!";</script>
+    </head>
+    <body>
+        <div id="top">
+            <div id="nav">
+                <p>Blog</p>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+        </div>
+        <i class="material-icons" id="toc-hamburger">
+            menu
+        </i>
+        <i class="material-icons" id="toc-close">
+            close
+        </i>
+        <div id="table-of-contents">
+
+        </div>
+
+        <div id="main">
+            <h1 id="top-header">FTC 2024-2025: New Code Structure</h1>
+            <h3>By Luke White</h3>
+            <h2>Introduction</h2>
+            <p>
+                Well welcome to my first actual post! I am writing this well into the season, but I'll do my best to recap the season so far in small chunks. This is our FTC team's second year
+                doing FTC (the year before there was an FRC team but that got disbanded). I have learned a lot and had a lot of fun over the course of my robotics "career". As much as I wished
+                I could use C++, I've found Java to be tolerable.
+            </p>
+            <h2>Last Year</h2>
+            <p>
+                Last year was my first year of FTC. Coming from FRC, I didn't know what to expect, especially since I had only really used C++. I would also be the only programmer on the team.
+                My first impressions were: wow this is gonna be a lot easier than I expected. Unfortunately for FRC, C++ wasn't nearly as documented as Java was, so I was used to trying to figure out 
+                the problems I had by myself. I was amazed by how many libraries they offered: like a whole <a href="https://www.learnroadrunner.org">path planning library</a>!? Of course, I did write
+                the mecanum drive library myself, but I wasn't surprised to hear that there was one that I could've used.
+            </p>
+            <img src="img/sherman-subsystem-files.png" width="500">
+            <p>
+                From what I can remember, the whole process was pretty smooth once I got used to it. Each subsystem on the robot was split into its own file with a loop() function that was run continuously
+                in the opmode. Seemed pretty straightforward. Only problem: for autonomous, we lacked the option to run two subsystems in parallel, as well as just general flexibiity for commands.
+            </p>
+            <img src="img/sherman-opmode.png" width="500">
+            <h2>This Year</h2>
+            <p>
+                Enter FTCLib. FTCLib lets us create <b>commands</b> that we can run in synchronous or in sequence. This year, we used FTCLib, and it has been very useful, especially for autonomous. We can now
+                create macros much easier than before, both in teleop and autonomous. In the future, I plan to write my own library similar to FTCLib in the future, but for now, it's been very useful.
+            </p>
+            <img src="img/hippo-command-structure.png" width="500">
+            <p>
+                As far as general structure, I still have each subsystem its own class like before. Some improvements I've made is adding a constants file (why didn't I have this last year!?), where all our tunable
+                values are kept. There is now an entire folder dedicated to different commands that we can use at any time (so useful).
+            </p>
+            <img src="img/hippo-commands.png" width="500">
+            <p>
+                One really useful tool that we used this year is MeepMeep, which allows us to visualize our Roadrunner paths out beforehand. This has helped with making sure our robot doesn't slam into the wall because we put the wrong 
+                degrees in the trajectory. So far Roadrunner (our path following library) has worked out fine, but it is pretty slow and limited. Hopefully (fingers crossed) I can write my own path following library similar to 
+                Pedro Pathing, but we'll see.
+            </p>
+            <img src="img/hippo-meepmeep.png" width="500">
+            <p>
+                That's about all I can remember that's changed from last year as far as structure. Thanks for reading and check back for more!
+                Also, quick unrelated note: this year we've started our <a href="https://www.youtube.com/@FirestormRobotics">Youtube channel</a>! Feel free to check it out.
+
+            </p>
+        </div>
+
+        <div id="images">
+
+        </div>
+
+        <script src="page.js"></script>
+        <script src="table-of-contents.js"></script>
+    </body>
+</html>

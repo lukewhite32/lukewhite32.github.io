@@ -116,7 +116,12 @@ a {
     padding: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    line-height: 25px;
     text-align: justify;
+}
+
+#main a {
+    color: blue;
 }
 
 #main h1, h2, h3 {
@@ -136,6 +141,7 @@ a {
 #main img {
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 30px;
     max-width: 100%;
     height: auto;
     width: auto\9; /* ie8 */

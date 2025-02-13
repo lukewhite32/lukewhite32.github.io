@@ -1,4 +1,4 @@
-var posts = [
+var posts = [    // Can't figure out how to read from a darn json file
     `{
         "title": "Table Of Contents"
     }`,
@@ -12,6 +12,13 @@ var posts = [
     `{
         "name": "Broken Calculator... Kinda",
         "link": "broken-calculator.html"
+    }`,
+    `{
+        "title": "FTC Into The Deep 2024-2025"
+    }`,
+    `{
+        "name": "New Code Structure!",
+        "link": "new-code-structure.html"
     }`
 ]
 
