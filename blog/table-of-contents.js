@@ -14,7 +14,7 @@ var posts = [    // Can't figure out how to read from a darn json file
         "link": "broken-calculator.html"
     }`,
     `{
-        "title": "FTC Into The Deep 2024-2025"
+        "title": "FTC 2024-2025"
     }`,
     `{
         "name": "New Code Structure!",
@@ -23,6 +23,13 @@ var posts = [    // Can't figure out how to read from a darn json file
     `{
         "name": "Season End",
         "link": "Season-Recap.html"
+    }`,
+    `{
+        "title": "General FTC"
+    }`,
+    `{
+        "name": "Plans for Trailblazer",
+        "link": "Plans-for-Trailblazer.html"
     }`
 ]
 

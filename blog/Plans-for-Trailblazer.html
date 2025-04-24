@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8">
+
+        <title>Blog by Luke White</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <link rel="stylesheet" href="main.css">
+
+        <script>const blogName = "Plans for Trailblazer";</script>
+    </head>
+    <body>
+        <div id="top">
+            <div id="nav">
+                <p>Blog</p>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+        </div>
+        <i class="material-icons" id="toc-hamburger">
+            menu
+        </i>
+        <i class="material-icons" id="toc-close">
+            close
+        </i>
+        <div id="table-of-contents">
+
+        </div>
+
+        <div id="main">
+            <h1 id="top-header">Plans for Trailblazer</h1>
+            <h2>The Idea</h2>
+            <p>
+                The idea first occured to me when one day I was tuning <a href="https://learnroadrunner.com/introduction.html">Roadrunner</a>, a trajectory follower library that makes autonomous pathing very straightforward. I marveled at the different tuners I had to run, and thought to myself: what is it actually doing?
+                what's the math behind it? That's when my trajectory-follower-research began. I started researching how these libraries worked, learned more about localization, dead wheels, and also a roadrunner alternative - Pedro Pathing (I still can't understand the name). I learned the main differences between 
+                Roadrunner and PedroPathing, which I will explain in a bit. But overall I concluded: it would be really cool if I could write my <i>own</i> library for this. Sure, the math's hard, but <i>I'll just learn it.</i> Not that hard right?...
+            </p>
+            <h2>Roadrunner vs PedroPathing</h2>
+            <p>
+                First, before I start writing any code, I gotta do some planning. The top 2 libraries used in FTC for path following is Roadrunner and PedroPathing. The goal of Roadrunner is to have <i>consistent pathing.</i>. The way roadrunner works, it computes all the motor velocities ahead of time and 
+                uses linear interpolation to determine what to set the motors at based on how far ahead it is in the path. It does also use PID in this process to stay on course, but I still don't really understand how they do this. Second is PedroPathing, which the good teams use for speed and accuracy. PedroPathing 
+                focuses on <i>speed</i> and <i>accuracy along the path</i>. How Pedro works: it creates a bunch of points along the line that it needs to follow. It uses drive, translational, rotational, and centipetal vectors to target the <i>next closest point</i>. 
+                This makes it to where it sticks to the path very well and can handle disturbances well. It is also very fast, which is why the majority of good teams use it. It does sacrifice on consistency though, since every run will be different by nature of the 
+                PID algorithm.
+            </p>
+            <p>
+                So, if I want to select a library to base mine off of, it would either have to:
+            </p>
+                <p>- Compute the wheel velocities over time for the specified path</p>
+            <p>OR</p>
+                <p>
+                    - Generate a bunch of points and use PID to have the robot stick to the points.
+                </o>
+            <p>On the face of it, the PedroPathing solution does seem to be the mathematically simpler option. Generating single points seems easier than generating full on velocities.</p>
+            <p>
+                So ultimately I decided to go with this method. Having a fast, accurate path planner would be most ideal, especially if I want to end up using this on our actual FTC bot. It needs to, at the bare minimum, meet the times and speeds of PedroPathing. Now, the main reason I am doing this is for the learning experience. 
+                I have always wanted to have the most control over my code. Using other libraries just seems like cheating to me - after all, when using a library, are you really learning the fundamental skills? By actually applying your knowledge into a pretty big project like this, 
+                there is so much to learn.
+            </p>
+        </div>
+
+        <div id="images">
+
+        </div>
+
+        <script src="page.js"></script>
+        <script src="table-of-contents.js"></script>
+    </body>
+</html>
