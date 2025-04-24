@@ -19,6 +19,10 @@ var posts = [    // Can't figure out how to read from a darn json file
     `{
         "name": "New Code Structure!",
         "link": "new-code-structure.html"
+    }`,
+    `{
+        "name": "Season End",
+        "link": "Season-Recap.html"
     }`
 ]
 
